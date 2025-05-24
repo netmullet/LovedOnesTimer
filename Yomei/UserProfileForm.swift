@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserProfileForm: View {
-    // TODO: @Binding化
+    // TODO: @Bindable化
     @State private var birthday: Date = {
         var components = DateComponents()
         components.year = 2000
@@ -17,15 +17,14 @@ struct UserProfileForm: View {
         return Calendar.current.date(from: components) ?? Date()
     }()
     
+    @State private var gender: Gender? = nil
+    
     var body: some View {
         VStack {
             Text("あなたの誕生日を\n教えてください")
                 .font(.title)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
-                .padding()
-            Text("一度登録すると誕生日の変更はできません")
-                .font(.footnote)
             
             DatePicker("Select a date", selection: $birthday, in:
                         Date.distantPast...Date.now, displayedComponents: .date)
@@ -40,7 +39,13 @@ struct UserProfileForm: View {
                 .multilineTextAlignment(.center)
                 .padding()
             
-            
+            HStack {
+                ForEach(Gender.allCases) { g in
+                    GenderButton(label: g.emoji, text: g.rawValue, isSelected: gender == g) {
+                        gender = g
+                    }
+                }
+            }
         }
     }
 }
