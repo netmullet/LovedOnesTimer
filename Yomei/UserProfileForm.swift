@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct UserProfileForm: View {
+    var onComplete: () -> Void
+    
     // TODO: @Bindable化
     @State private var birthday: Date = {
         var components = DateComponents()
@@ -18,6 +20,7 @@ struct UserProfileForm: View {
     }()
     
     @State private var gender: Gender? = nil
+    @State private var showAlert = false
     
     var body: some View {
         VStack {
@@ -46,10 +49,21 @@ struct UserProfileForm: View {
                     }
                 }
             }
+            Button("はじめる") {
+                if gender != nil {
+                    onComplete()
+                } else {
+                    showAlert = true
+                }
+            }
+            .alert("性別を選択してください", isPresented: $showAlert) {
+                Button("OK", role: .cancel) {}
+            }
         }
     }
 }
 
 #Preview {
-    UserProfileForm()
+    UserProfileForm {
+    }
 }

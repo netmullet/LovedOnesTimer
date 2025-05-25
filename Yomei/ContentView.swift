@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("isProfileCompleted") private var isProfileCompleted = false
+    
     var body: some View {
-        UserProfileForm()
+        if isProfileCompleted {
+            Text("Home")
+        } else {
+            TabView {
+                WelcomePage()
+                UserProfileForm {
+                    isProfileCompleted = true
+                }
+            }
+            .tabViewStyle(.page)
+        }
     }
 }
 

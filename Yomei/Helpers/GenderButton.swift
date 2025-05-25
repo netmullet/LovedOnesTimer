@@ -34,7 +34,6 @@ struct GenderButton: View {
 }
 
 #Preview {
-    GenderButton(label: "👨", text: "男性", isSelected: true) {
-        
+    GenderButton(label: Gender.male.emoji, text: Gender.male.rawValue, isSelected: true) {
     }
 }
