@@ -10,9 +10,16 @@ import SwiftData
 
 @main
 struct YomeiApp: App {
+    @AppStorage("isOnboarding") var isOnboarding: Bool = true
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isOnboarding {
+                OnBoardingView()
+            } else {
+                ContentView()
+            }
         }
+        .modelContainer(for: UserProfile.self)
     }
 }

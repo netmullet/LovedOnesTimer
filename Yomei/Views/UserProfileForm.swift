@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct UserProfileForm: View {
-    var onComplete: () -> Void
     
-    // TODO: @Bindable化
+    @AppStorage("isOnboarding") var isOnboarding: Bool?
+    @Environment(\.modelContext) private var context
+    
     @State private var birthday: Date = {
         var components = DateComponents()
         components.year = 2000
@@ -19,7 +20,7 @@ struct UserProfileForm: View {
         return Calendar.current.date(from: components) ?? Date()
     }()
     
-    @State private var gender: Gender? = nil
+    @State private var gender: Gender?
     @State private var showAlert = false
     
     var body: some View {
@@ -44,26 +45,33 @@ struct UserProfileForm: View {
             
             HStack {
                 ForEach(Gender.allCases) { g in
-                    GenderButton(label: g.emoji, text: g.rawValue, isSelected: gender == g) {
+                    GenderButton(label: g.emoji, text: g.displayName, isSelected: gender == g) {
                         gender = g
                     }
                 }
             }
-            Button("はじめる") {
-                if gender != nil {
-                    onComplete()
-                } else {
+            Button(action: {
+                if gender == nil {
                     showAlert = true
+                } else {
+                    isOnboarding = false
+                    
+                    saveUserProfile()
                 }
+            }) {
+                Text("はじめる")
             }
             .alert("性別を選択してください", isPresented: $showAlert) {
                 Button("OK", role: .cancel) {}
             }
         }
     }
+    
+    private func saveUserProfile() {
+        context.insert(UserProfile(birthday: birthday, gender: gender))
+    }
 }
 
 #Preview {
-    UserProfileForm {
-    }
+    UserProfileForm()
 }
