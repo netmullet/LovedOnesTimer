@@ -6,19 +6,36 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     
     @AppStorage("isOnboarding") var isOnboarding: Bool?
+    @Query private var userProfiles: [UserProfile]
     
     var body: some View {
-        VStack {
-            UserProfileView()
-            
-            Button(action: {
-                isOnboarding = true
-            }) {
-                Text("Re-Start")
+        NavigationStack {
+            VStack {
+                ForEach(userProfiles) { userProfile in
+                    NavigationLink {
+                        UserProfileDetail(userProfile: userProfile)
+                    } label: {
+                        UserProfileCard(userProfile: userProfile)
+                    }
+                }
+                .foregroundStyle(.white)
+                .background(.tint, in: RoundedRectangle(cornerRadius: 10))
+                .padding()
+                
+//                Spacer(minLength: 20)
+                
+                LovedOneList()
+                
+                Button(action: {
+                    isOnboarding = true
+                }) {
+                    Text("Re-Start")
+                }
             }
         }
     }

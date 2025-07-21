@@ -6,13 +6,44 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct LovedOneCard: View {
+    var lovedOne: LovedOne
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Text("\(lovedOne.name)")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                Spacer()
+            }
+            .padding(.top)
+            .padding(.leading)
+            
+            Text("想定寿命\(lovedOne.expectedLifeSpan.formatted(.number.precision(.fractionLength(2))))歳まで")
+                .font(.title3)
+                .fontWeight(.semibold)
+            
+            HStack(alignment: .lastTextBaseline) {
+                Image(systemName: "heart.circle")
+                    .font(.title)
+                Text("\(lovedOne.remainingDays)")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                Text("日")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+            }
+            .padding(.bottom)
+        }
+        .foregroundStyle(.white)
+        .background(.tint, in: RoundedRectangle(cornerRadius: 10))
+        .padding()
     }
 }
 
 #Preview {
-    LovedOneCard()
+    LovedOneCard(lovedOne: LovedOne.sampleData[0])
 }

@@ -11,7 +11,6 @@ struct OnBoardingView: View {
     var body: some View {
         TabView {
             WelcomePage()
-            UserProfileForm()
         }
         .tabViewStyle(.page)
     }

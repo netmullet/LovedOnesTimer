@@ -20,6 +20,6 @@ struct YomeiApp: App {
                 ContentView()
             }
         }
-        .modelContainer(for: UserProfile.self)
+        .modelContainer(for: [UserProfile.self, LovedOne.self])
     }
 }

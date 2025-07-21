@@ -22,9 +22,14 @@ class SampleData {
         UserProfile.sampleData.first!
     }
     
+    var lovedOne: LovedOne {
+        LovedOne.sampleData.first!
+    }
+    
     private init() {
         let schema = Schema([
-            UserProfile.self
+            UserProfile.self,
+            LovedOne.self
         ])
         
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
@@ -43,6 +48,10 @@ class SampleData {
     private func insertSampleData() {
         for userProfile in UserProfile.sampleData {
             context.insert(userProfile)
+        }
+        
+        for lovedOne in LovedOne.sampleData {
+            context.insert(lovedOne)
         }
     }
 }

@@ -18,43 +18,33 @@ class UserProfile {
         return Calendar.current.date(from: components) ?? Date()
     }()
     
-    var gender: Gender?
+    var expectedLifeSpan: Double = 80.00
     
-    init(birthday: Date, gender: Gender? = nil) {
+    init(birthday: Date, expectedLifeSpan: Double) {
         self.birthday = birthday
-        self.gender = gender
+        self.expectedLifeSpan = expectedLifeSpan
     }
     
     static let sampleData = [
-        UserProfile(birthday: Date.now, gender: .male)
+        UserProfile(birthday: Date.now, expectedLifeSpan: 80.00)
     ]
     
-    var expectedRemainingDays: ([Life]) -> Int? {
-        return { lifeTable in
-            guard let gender = self.gender else { return nil }
-            
-            let calendar = Calendar.current
-            let now = Date()
-            
-            let ageComponents = calendar.dateComponents([.year, .month, .day], from: self.birthday, to: now)
-            guard let years = ageComponents.year,
-                  let months = ageComponents.month,
-                  let days = ageComponents.day else { return nil }
-            
-            // 小数年齢を算出
-            let exactAge = Double(years) + Double(months) / 12.0 + Double(days) / 365.25
-            
-            let ageInt = Int(floor(exactAge))
-            
-            guard let life = lifeTable.first(where: { $0.gender == gender.rawValue}) else { return nil }
-            
-            guard let expectancy = life.lifeExpectancies.first(where: {$0.age == ageInt}) else { return nil }
-            
-            let remainingYears = expectancy.lifeExpectancy - exactAge
-            
-            let remainingDays = Int(remainingYears * 365.25)
-            
-            return remainingDays
-        }
+    var remainingDays: Int {
+        let calendar = Calendar.current
+        let now = Date()
+
+        let ageComponents = calendar.dateComponents([.year, .month, .day], from: self.birthday, to: now)
+        let years = ageComponents.year
+        let months = ageComponents.month
+        let days = ageComponents.day
+
+        // 実年齢を算出
+        let exactAge: Double = Double(years ?? 0) + Double(months ?? 0) / 12.0 + Double(days ?? 0) / 365.25
+
+        let remainingYears = expectedLifeSpan - exactAge
+
+        let remainingDays = Int(remainingYears * 365.25)
+
+        return remainingDays
     }
 }

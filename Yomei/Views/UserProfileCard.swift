@@ -8,10 +8,12 @@
 import SwiftUI
 import SwiftData
 
-struct RemainingDaysCard: View {
-    @Query private var userProfiles: [UserProfile]
+struct UserProfileCard: View {
+//    @Query private var userProfiles: [UserProfile]
+    var userProfile: UserProfile
     
     var body: some View {
+//        ForEach(userProfiles) { userProfile in
         VStack {
             HStack {
                 Text("あなた")
@@ -22,35 +24,32 @@ struct RemainingDaysCard: View {
             .padding(.top)
             .padding(.leading)
             
-            Text("平均余命")
+            Text("想定寿命\(userProfile.expectedLifeSpan.formatted(.number.precision(.fractionLength(2))))歳まで")
                 .font(.title3)
                 .fontWeight(.semibold)
                  
-            ForEach(userProfiles) { userProfile in
-                if let days = userProfile.calculateRemainingDays(lifes) {
-                    HStack(alignment: .lastTextBaseline) {
-                        Image(systemName: "heart.circle")
-                            .font(.title)
-                        Text("\(days)")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                        Text("日")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                    }
-                    .padding(.bottom)
-                    
+                HStack(alignment: .lastTextBaseline) {
+                    Image(systemName: "heart.circle")
+                        .font(.title)
+                    Text("\(userProfile.remainingDays)")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    Text("日")
+                        .font(.title2)
+                        .fontWeight(.semibold)
                 }
+                .padding(.bottom)
             }
-        }
-        .foregroundStyle(.white)
-        .background(.tint, in: RoundedRectangle(cornerRadius: 10))
-        .padding()
+//        }
+//        .foregroundStyle(.white)
+//        .background(.tint, in: RoundedRectangle(cornerRadius: 10))
+//        .padding()
     }
 }
 
-#Preview {
-    RemainingDaysCard()
-        .modelContainer(SampleData.shared.modelContainer)
-}
+//#Preview {
+//    UserProfileCard()
+//        .modelContainer(SampleData.shared.modelContainer)
+//}
     
+

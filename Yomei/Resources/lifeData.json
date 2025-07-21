@@ -1,9 +1,0 @@
-[
-    {
-        "gender":"male",
-        "lifeExpectancies": [
-            {"age": 0, "lifeExpectancy": 81.56},
-            {"age": 1, "lifeExpectancy": 80.71}
-        ]
-    }
-]
