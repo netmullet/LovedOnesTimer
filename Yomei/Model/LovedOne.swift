@@ -19,19 +19,19 @@ class LovedOne {
         return Calendar.current.date(from: components) ?? Date()
     }()
     
-    var expectedLifeSpan: Double = 80.00
+    var expectedLifeSpan: Int = 80
     
-    init(name: String, birthday: Date, expectedLifeSpan: Double) {
+    init(name: String, birthday: Date, expectedLifeSpan: Int) {
         self.name = name
         self.birthday = birthday
         self.expectedLifeSpan = expectedLifeSpan
     }
     
     static let sampleData = [
-        LovedOne(name: "ひなた", birthday: Date.now, expectedLifeSpan: 80.00),
-        LovedOne(name: "ゆめ", birthday: Date.now, expectedLifeSpan: 88.00),
-        LovedOne(name: "れん", birthday: Date.now, expectedLifeSpan: 81.00),
-        LovedOne(name: "ゆう", birthday: Date.now,  expectedLifeSpan: 82.00),
+        LovedOne(name: "ひなた", birthday: Date.now, expectedLifeSpan: 80),
+        LovedOne(name: "ゆめ", birthday: Date.now, expectedLifeSpan: 88),
+        LovedOne(name: "れん", birthday: Date.now, expectedLifeSpan: 81),
+        LovedOne(name: "ゆう", birthday: Date.now,  expectedLifeSpan: 82),
     ]
     
     var remainingDays: Int {
@@ -46,7 +46,7 @@ class LovedOne {
         // 実年齢を算出
         let exactAge: Double = Double(years ?? 0) + Double(months ?? 0) / 12.0 + Double(days ?? 0) / 365.25
 
-        let remainingYears = expectedLifeSpan - exactAge
+        let remainingYears = Double(expectedLifeSpan) - exactAge
 
         let remainingDays = Int(remainingYears * 365.25)
 

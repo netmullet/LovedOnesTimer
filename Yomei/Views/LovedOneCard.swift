@@ -22,7 +22,7 @@ struct LovedOneCard: View {
             .padding(.top)
             .padding(.leading)
             
-            Text("想定寿命\(lovedOne.expectedLifeSpan.formatted(.number.precision(.fractionLength(2))))歳まで")
+            Text("想定寿命\(lovedOne.expectedLifeSpan)歳まで")
                 .font(.title3)
                 .fontWeight(.semibold)
             

@@ -9,11 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct UserProfileCard: View {
-//    @Query private var userProfiles: [UserProfile]
+
     var userProfile: UserProfile
     
     var body: some View {
-//        ForEach(userProfiles) { userProfile in
         VStack {
             HStack {
                 Text("あなた")
@@ -24,7 +23,7 @@ struct UserProfileCard: View {
             .padding(.top)
             .padding(.leading)
             
-            Text("想定寿命\(userProfile.expectedLifeSpan.formatted(.number.precision(.fractionLength(2))))歳まで")
+            Text("想定寿命\(userProfile.expectedLifeSpan)歳まで")
                 .font(.title3)
                 .fontWeight(.semibold)
                  
@@ -40,16 +39,11 @@ struct UserProfileCard: View {
                 }
                 .padding(.bottom)
             }
-//        }
-//        .foregroundStyle(.white)
-//        .background(.tint, in: RoundedRectangle(cornerRadius: 10))
-//        .padding()
+        .foregroundStyle(.white)
+        .background(.tint, in: RoundedRectangle(cornerRadius: 10))
     }
 }
 
-//#Preview {
-//    UserProfileCard()
-//        .modelContainer(SampleData.shared.modelContainer)
-//}
-    
-
+#Preview {
+    UserProfileCard(userProfile: UserProfile.sampleData[0])
+}

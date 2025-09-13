@@ -49,7 +49,7 @@ struct LovedOneList: View {
     }
     
     private func addLovedOne() {
-        let newLovedOne = LovedOne(name: "", birthday: Date(timeIntervalSinceReferenceDate: 0), expectedLifeSpan: 80.00)
+        let newLovedOne = LovedOne(name: "", birthday: Date(timeIntervalSinceReferenceDate: 0), expectedLifeSpan: 80)
         context.insert(newLovedOne)
         self.newLovedOne = newLovedOne
     }

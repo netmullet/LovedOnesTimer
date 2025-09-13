@@ -27,8 +27,6 @@ struct ContentView: View {
                 .background(.tint, in: RoundedRectangle(cornerRadius: 10))
                 .padding()
                 
-//                Spacer(minLength: 20)
-                
                 LovedOneList()
                 
                 Button(action: {
