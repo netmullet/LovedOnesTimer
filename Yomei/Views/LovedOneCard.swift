@@ -12,6 +12,8 @@ struct LovedOneCard: View {
     var lovedOne: LovedOne
     
     var body: some View {
+        let percentage = Double(lovedOne.exactAge) / Double(lovedOne.expectedLifeSpan) * 100
+        
         VStack {
             HStack {
                 Text("\(lovedOne.name)")
@@ -37,6 +39,10 @@ struct LovedOneCard: View {
                     .fontWeight(.semibold)
             }
             .padding(.bottom)
+            
+            ProgressBar(width: 300, height: 10, percentage: percentage, color1: .red, color2: .blue)
+                .padding(.bottom)
+            
         }
         .foregroundStyle(.white)
         .background(.tint, in: RoundedRectangle(cornerRadius: 10))

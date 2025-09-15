@@ -13,6 +13,8 @@ struct UserProfileCard: View {
     var userProfile: UserProfile
     
     var body: some View {
+        let percentage = Double(userProfile.exactAge) / Double(userProfile.expectedLifeSpan) * 100
+        
         VStack {
             HStack {
                 Text("あなた")
@@ -38,6 +40,10 @@ struct UserProfileCard: View {
                         .fontWeight(.semibold)
                 }
                 .padding(.bottom)
+            
+            ProgressBar(width: 300, height: 20, percentage: percentage, color1: .red, color2: .blue)
+                .padding(.bottom)
+            
             }
         .foregroundStyle(.white)
         .background(.tint, in: RoundedRectangle(cornerRadius: 10))

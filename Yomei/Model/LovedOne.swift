@@ -34,18 +34,21 @@ class LovedOne {
         LovedOne(name: "ゆう", birthday: Date.now,  expectedLifeSpan: 82),
     ]
     
-    var remainingDays: Int {
+    var exactAge: Double {
         let calendar = Calendar.current
         let now = Date()
-
+        
         let ageComponents = calendar.dateComponents([.year, .month, .day], from: self.birthday, to: now)
         let years = ageComponents.year
         let months = ageComponents.month
         let days = ageComponents.day
-
-        // 実年齢を算出
+        
         let exactAge: Double = Double(years ?? 0) + Double(months ?? 0) / 12.0 + Double(days ?? 0) / 365.25
-
+        
+        return exactAge
+    }
+    
+    var remainingDays: Int {
         let remainingYears = Double(expectedLifeSpan) - exactAge
 
         let remainingDays = Int(remainingYears * 365.25)

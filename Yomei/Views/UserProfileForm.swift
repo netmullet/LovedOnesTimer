@@ -22,6 +22,8 @@ struct UserProfileForm: View {
     
     @State private var expectedLifespan = 80
     
+    @State private var isShowSafari: Bool = false
+    
     var body: some View {
         VStack {
             Text("あなたの誕生日を\n教えてください")
@@ -40,11 +42,18 @@ struct UserProfileForm: View {
                 .font(.title)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
-            
-            TextField("寿命を入力 (例: 70.45)", value: $expectedLifespan, format: .number)
-                .textFieldStyle(.roundedBorder)
+
+            Stepper("\(expectedLifespan)歳", value: $expectedLifespan, in: 0...130)
                 .padding()
-                .keyboardType(.decimalPad)
+            
+            Button(action: {
+                isShowSafari.toggle()
+            }) {
+                Text("Safariで平均寿命を検索する")
+            }
+            .sheet(isPresented: $isShowSafari) {
+                SafariView(url: URL(string: "https://www.google.com/search?q=平均寿命+日本")!)
+            }
             
             Button(action: {
                 isOnboarding = false
