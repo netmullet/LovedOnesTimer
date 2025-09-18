@@ -15,7 +15,7 @@ struct LovedOneList: View {
     
     var body: some View {
         HStack {
-            Text("大切な人たち")
+            Text("大切な人リスト")
                 .font(.headline)
             Spacer()
             Button(action: addLovedOne) {
@@ -26,20 +26,29 @@ struct LovedOneList: View {
         .padding(.horizontal)
         .padding(.top)
         
-        List {
-            ForEach(lovedOnes) { lovedOne in
-                LovedOneCard(lovedOne: lovedOne)
-                    .background(
-                        NavigationLink("", destination: LovedOneDetail(lovedOne: lovedOne))
-                            .opacity(0)
-                    )
+        Group {
+            if !lovedOnes.isEmpty {
+                List {
+                    ForEach(lovedOnes) { lovedOne in
+                        LovedOneCard(lovedOne: lovedOne)
+                            .background(
+                                NavigationLink("", destination: LovedOneDetail(lovedOne: lovedOne))
+                                    .opacity(0)
+                            )
+                    }
+                    .onDelete(perform: deleteLovedOne(indexes:))
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets())
+                }
+                .listStyle(.plain)
+            } else {
+                ContentUnavailableView {
+                    Label("大切な人を追加しよう", systemImage: "person.and.person")
+                } description: {
+                    Text("右上の「+」ボタンで新しい人を追加できます")
+                }
             }
-            .onDelete(perform: deleteLovedOne(indexes:))
-            .listRowSeparator(.hidden)
-            .listRowInsets(EdgeInsets())
         }
-        .listStyle(.plain)
-        .navigationTitle("大切な人たち")
         .sheet(item: $newLovedOne) { lovedOne in
             NavigationStack {
                 LovedOneDetail(lovedOne: lovedOne, isNew: true)
@@ -65,4 +74,9 @@ struct LovedOneList: View {
 #Preview {
     LovedOneList()
         .modelContainer(SampleData.shared.modelContainer)
+}
+
+#Preview("Empty List") {
+    LovedOneList()
+        .modelContainer(for: LovedOne.self, inMemory: true)
 }

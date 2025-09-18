@@ -10,10 +10,30 @@ import SwiftData
 
 struct ContentView: View {
     
+    @State private var isShowingSetttings: Bool = false
     @AppStorage("isOnboarding") var isOnboarding: Bool?
     @Query private var userProfiles: [UserProfile]
     
     var body: some View {
+        HStack {
+            Text("Yomei")
+                .font(.title)
+                .fontWeight(.bold)
+            
+            Spacer()
+            
+            Button(action: {
+                isShowingSetttings.toggle()
+            }) {
+                Image(systemName: "gearshape.fill")
+                    .font(.title2)
+            }
+            .sheet(isPresented: $isShowingSetttings) {
+                SettingsView()
+            }
+        }
+        .padding(.horizontal)
+        
         NavigationStack {
             VStack {
                 ForEach(userProfiles) { userProfile in
@@ -34,6 +54,9 @@ struct ContentView: View {
                 }) {
                     Text("Re-Start")
                 }
+            }
+            .toolbar {
+                
             }
         }
     }
