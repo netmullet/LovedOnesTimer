@@ -44,24 +44,34 @@ struct UserProfileForm: View {
                 .multilineTextAlignment(.center)
 
             Stepper("\(expectedLifespan)歳", value: $expectedLifespan, in: 0...130)
+                .font(.title)
+                .fontWeight(.semibold)
+                .padding(.horizontal, 60)
+//                .border(Color.gray, width: 1)
                 .padding()
             
-            Button(action: {
+            Button {
                 isShowSafari.toggle()
-            }) {
+            } label: {
                 Text("Safariで平均寿命を検索する")
+                    .padding(.vertical, 2)
             }
+            .buttonStyle(.borderedProminent)
             .sheet(isPresented: $isShowSafari) {
-                SafariView(url: URL(string: "https://www.google.com/search?q=平均寿命+日本")!)
+                SafariView(url: URL(string: "https://www.google.com/search?q=平均寿命")!)
             }
             
-            Button(action: {
+            Button {
                 isOnboarding = false
                 
                 saveUserProfile()
-            }) {
+            } label: {
                 Text("はじめる")
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 128)
             }
+            .buttonStyle(.borderedProminent)
+            .padding(.top, 80)
         }
     }
     

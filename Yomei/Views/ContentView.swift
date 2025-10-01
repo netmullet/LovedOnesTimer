@@ -15,26 +15,26 @@ struct ContentView: View {
     @Query private var userProfiles: [UserProfile]
     
     var body: some View {
-        HStack {
-            Text("Yomei")
-                .font(.title)
-                .fontWeight(.bold)
-            
-            Spacer()
-            
-            Button(action: {
-                isShowingSetttings.toggle()
-            }) {
-                Image(systemName: "gearshape.fill")
-                    .font(.title2)
-            }
-            .sheet(isPresented: $isShowingSetttings) {
-                SettingsView()
-            }
-        }
-        .padding(.horizontal)
         
         NavigationStack {
+            HStack {
+                Text("Yomei")
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                Button(action: {
+                    isShowingSetttings.toggle()
+                }) {
+                    Image(systemName: "gearshape.fill")
+                        .font(.title2)
+                }
+                .sheet(isPresented: $isShowingSetttings) {
+                    SettingsView()
+                }
+            }
+            .padding(.horizontal)
             VStack {
                 ForEach(userProfiles) { userProfile in
                     NavigationLink {
