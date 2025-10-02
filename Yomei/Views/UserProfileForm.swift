@@ -61,17 +61,31 @@ struct UserProfileForm: View {
                 SafariView(url: URL(string: "https://www.google.com/search?q=平均寿命")!)
             }
             
-            Button {
-                isOnboarding = false
-                
-                saveUserProfile()
-            } label: {
-                Text("はじめる")
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 128)
+            if #available(iOS 26.0, *) {
+                Button {
+                    isOnboarding = false
+                    
+                    saveUserProfile()
+                } label: {
+                    Text("はじめる")
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 128)
+                }
+                .buttonStyle(.glassProminent)
+                .padding(.top, 80)
+            } else {
+                Button {
+                    isOnboarding = false
+                    
+                    saveUserProfile()
+                } label: {
+                    Text("はじめる")
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 128)
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(.top, 80)
             }
-            .buttonStyle(.borderedProminent)
-            .padding(.top, 80)
         }
     }
     

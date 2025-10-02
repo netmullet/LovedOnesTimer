@@ -15,7 +15,6 @@ struct ContentView: View {
     @Query private var userProfiles: [UserProfile]
     
     var body: some View {
-        
         NavigationStack {
             HStack {
                 Text("Yomei")
@@ -35,6 +34,7 @@ struct ContentView: View {
                 }
             }
             .padding(.horizontal)
+            
             VStack {
                 ForEach(userProfiles) { userProfile in
                     NavigationLink {
