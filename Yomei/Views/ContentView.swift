@@ -16,26 +16,27 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            HStack {
-                Text("Yomei")
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-                Spacer()
-                
-                Button(action: {
-                    isShowingSetttings.toggle()
-                }) {
-                    Image(systemName: "gearshape.fill")
-                        .font(.title2)
-                }
-                .sheet(isPresented: $isShowingSetttings) {
-                    SettingsView()
-                }
-            }
-            .padding(.horizontal)
-            
             VStack {
+                HStack {
+                    Text("Yomei")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        isShowingSetttings.toggle()
+                    }) {
+                        Image(systemName: "gearshape.fill")
+                            .font(.title2)
+                    }
+                    .sheet(isPresented: $isShowingSetttings) {
+                        SettingsView()
+                    }
+                }
+                .padding(.horizontal)
+                .background(.appBackground)
+                
                 ForEach(userProfiles) { userProfile in
                     NavigationLink {
                         UserProfileDetail(userProfile: userProfile)
@@ -43,8 +44,6 @@ struct ContentView: View {
                         UserProfileCard(userProfile: userProfile)
                     }
                 }
-                .foregroundStyle(.white)
-                .background(.tint, in: RoundedRectangle(cornerRadius: 10))
                 .padding()
                 
                 LovedOneList()
@@ -55,9 +54,7 @@ struct ContentView: View {
                     Text("Re-Start")
                 }
             }
-            .toolbar {
-                
-            }
+            .background(.appBackground)
         }
     }
 }

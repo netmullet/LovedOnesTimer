@@ -39,6 +39,7 @@ struct LovedOneList: View {
                     .onDelete(perform: deleteLovedOne(indexes:))
                     .listRowSeparator(.hidden)
                     .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.appBackground)
                 }
                 .listStyle(.plain)
             } else {
