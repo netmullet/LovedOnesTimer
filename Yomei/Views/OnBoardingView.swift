@@ -13,6 +13,7 @@ struct OnBoardingView: View {
             WelcomePage()
             UserProfileForm()
         }
+        .background(.appBackground)
         .tabViewStyle(.page)
     }
 }
