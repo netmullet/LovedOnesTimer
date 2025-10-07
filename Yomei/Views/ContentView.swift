@@ -8,6 +8,16 @@
 import SwiftUI
 import SwiftData
 
+let blueGradientColors: [Color] = [
+    .blueGradientTop,
+    .blueGradientBottom
+]
+
+let orangeGradientColors: [Color] = [
+    .orangeGradientTop,
+    .orangeGradientBottom
+]
+
 struct ContentView: View {
     
     @State private var isShowingSetttings: Bool = false
@@ -28,13 +38,14 @@ struct ContentView: View {
                         isShowingSetttings.toggle()
                     }) {
                         Image(systemName: "gearshape.fill")
-                            .font(.title2)
+                            .font(.title)
                     }
                     .sheet(isPresented: $isShowingSetttings) {
                         SettingsView()
                     }
                 }
                 .padding(.horizontal)
+                .foregroundStyle(Color(.label))
                 .background(.appBackground)
                 
                 ForEach(userProfiles) { userProfile in
@@ -48,11 +59,11 @@ struct ContentView: View {
                 
                 LovedOneList()
                 
-                Button(action: {
-                    isOnboarding = true
-                }) {
-                    Text("Re-Start")
-                }
+//                Button(action: {
+//                    isOnboarding = true
+//                }) {
+//                    Text("Re-Start")
+//                }
             }
             .background(.appBackground)
         }

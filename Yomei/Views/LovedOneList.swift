@@ -22,9 +22,10 @@ struct LovedOneList: View {
                 Label("", systemImage: "plus")
             }
             EditButton()
+                
         }
+        .foregroundStyle(Color(.label))
         .padding(.horizontal)
-        .padding(.top)
         
         Group {
             if !lovedOnes.isEmpty {

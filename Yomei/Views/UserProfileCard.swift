@@ -46,7 +46,7 @@ struct UserProfileCard: View {
             
             }
         .foregroundStyle(.white)
-        .background(.tint, in: RoundedRectangle(cornerRadius: 10))
+        .background(Gradient(colors: orangeGradientColors), in: RoundedRectangle(cornerRadius: 30))
     }
 }
 

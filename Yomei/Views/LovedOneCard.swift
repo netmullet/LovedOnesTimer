@@ -38,14 +38,13 @@ struct LovedOneCard: View {
                     .font(.title2)
                     .fontWeight(.semibold)
             }
-            .padding(.bottom)
             
             ProgressBar(width: 300, height: 10, percentage: percentage, color1: .red, color2: .blue)
                 .padding(.bottom)
             
         }
         .foregroundStyle(.white)
-        .background(.tint, in: RoundedRectangle(cornerRadius: 10))
+        .background(Gradient(colors: blueGradientColors), in: RoundedRectangle(cornerRadius: 30))
         .padding()
     }
 }
