@@ -17,7 +17,7 @@ struct UserProfileCard: View {
         
         VStack {
             HStack {
-                Text("あなた")
+                Text("You")
                     .font(.title2)
                     .fontWeight(.semibold)
                 Spacer()
@@ -25,7 +25,7 @@ struct UserProfileCard: View {
             .padding(.top)
             .padding(.leading)
             
-            Text("想定寿命\(userProfile.expectedLifeSpan)歳まで")
+            Text("To age \(userProfile.expectedLifeSpan)")
                 .font(.title3)
                 .fontWeight(.semibold)
                  
@@ -35,7 +35,7 @@ struct UserProfileCard: View {
                     Text("\(userProfile.remainingDays)")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                    Text("日")
+                    Text(userProfile.remainingDays == 1 ? "day" : "days")
                         .font(.title2)
                         .fontWeight(.semibold)
                 }
@@ -43,7 +43,6 @@ struct UserProfileCard: View {
             
             ProgressBar(width: 300, height: 20, percentage: percentage, color1: .red, color2: .blue)
                 .padding(.bottom)
-            
             }
         .foregroundStyle(.white)
         .background(Gradient(colors: orangeGradientColors), in: RoundedRectangle(cornerRadius: 30))

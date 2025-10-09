@@ -45,9 +45,9 @@ struct LovedOneList: View {
                 .listStyle(.plain)
             } else {
                 ContentUnavailableView {
-                    Label("大切な人を追加しよう", systemImage: "person.and.person")
+                    Label("Add Loved ones", systemImage: "person.and.person")
                 } description: {
-                    Text("右上の「+」ボタンで新しい人を追加できます")
+                    Text("Add a loved one from the plus button above.")
                 }
             }
         }

@@ -21,26 +21,26 @@ struct LovedOneDetail: View {
     
     var body: some View {
         Form {
-            TextField("名前", text: $lovedOne.name)
+            TextField("Name", text: $lovedOne.name)
                 .autocorrectionDisabled()
             
-            DatePicker("誕生日", selection: $lovedOne.birthday, displayedComponents: .date)
+            DatePicker("Birthdate", selection: $lovedOne.birthday, displayedComponents: .date)
             
-            Section(header: Text("想定寿命")) {
-                Stepper("\(lovedOne.expectedLifeSpan)歳", value: $lovedOne.expectedLifeSpan, in: 0...130)
+            Section(header: Text("Life expectancy")) {
+                Stepper("\(lovedOne.expectedLifeSpan) years old", value: $lovedOne.expectedLifeSpan, in: 0...130)
             }
         }
-        .navigationTitle(isNew ? "大切な人を追加" : "大切な人を編集")
+        .navigationTitle(isNew ? "Add Loved one" : "Edit Loved one")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if isNew {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("保存") {
+                    Button("Save") {
                         dismiss()
                     }
                 }
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("キャンセル") {
+                    Button("Cancel") {
                         context.delete(lovedOne)
                         dismiss()
                     }

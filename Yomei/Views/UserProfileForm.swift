@@ -26,7 +26,7 @@ struct UserProfileForm: View {
     
     var body: some View {
         VStack {
-            Text("あなたの誕生日を\n教えてください")
+            Text("Enter your date of birth")
                 .font(.title)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
@@ -38,25 +38,24 @@ struct UserProfileForm: View {
             .labelsHidden()
             .padding()
             
-            Text("あなたの想定寿命を\n教えてください")
+            Text("Select your \nexpected lifespan")
                 .font(.title)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
 
-            Stepper("\(expectedLifespan)歳", value: $expectedLifespan, in: 0...130)
-                .font(.title)
+            Stepper("\(expectedLifespan) years old", value: $expectedLifespan, in: 1...130)
+                .font(.title2)
                 .fontWeight(.semibold)
-                .padding(.horizontal, 60)
-//                .border(Color.gray, width: 1)
+                .padding(.horizontal, 50)
                 .padding()
             
             Button {
                 isShowSafari.toggle()
             } label: {
-                Text("Safariで平均寿命を検索する")
+                Text("Search average lifespan on Safari")
                     .padding(.vertical, 2)
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.bordered)
             .sheet(isPresented: $isShowSafari) {
                 SafariView(url: URL(string: "https://www.google.com/search?q=平均寿命")!)
             }
@@ -67,12 +66,14 @@ struct UserProfileForm: View {
                     
                     saveUserProfile()
                 } label: {
-                    Text("はじめる")
+                    Text("START")
                         .padding(.vertical, 8)
                         .padding(.horizontal, 128)
                 }
-                .buttonStyle(.glassProminent)
+                .tint(.blueGradientBottom)
+                .buttonStyle(.borderedProminent)
                 .padding(.top, 80)
+                
             } else {
                 Button {
                     isOnboarding = false
@@ -83,6 +84,7 @@ struct UserProfileForm: View {
                         .padding(.vertical, 8)
                         .padding(.horizontal, 128)
                 }
+                .tint(.blueGradientBottom)
                 .buttonStyle(.borderedProminent)
                 .padding(.top, 80)
             }

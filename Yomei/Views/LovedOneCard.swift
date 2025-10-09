@@ -24,7 +24,7 @@ struct LovedOneCard: View {
             .padding(.top)
             .padding(.leading)
             
-            Text("想定寿命\(lovedOne.expectedLifeSpan)歳まで")
+            Text("To age \(lovedOne.expectedLifeSpan)")
                 .font(.title3)
                 .fontWeight(.semibold)
             
@@ -34,7 +34,7 @@ struct LovedOneCard: View {
                 Text("\(lovedOne.remainingDays)")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                Text("日")
+                Text(lovedOne.remainingDays == 1 ? "day" : "days")
                     .font(.title2)
                     .fontWeight(.semibold)
             }

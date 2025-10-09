@@ -37,15 +37,15 @@ struct ContentView: View {
                     Button(action: {
                         isShowingSetttings.toggle()
                     }) {
-                        Image(systemName: "gearshape.fill")
-                            .font(.title)
+                        Image(systemName: "gearshape")
+                            .font(.title2)
+                            .foregroundStyle(.black)
                     }
                     .sheet(isPresented: $isShowingSetttings) {
                         SettingsView()
                     }
                 }
                 .padding(.horizontal)
-                .foregroundStyle(Color(.label))
                 .background(.appBackground)
                 
                 ForEach(userProfiles) { userProfile in

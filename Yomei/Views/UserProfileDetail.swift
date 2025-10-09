@@ -15,13 +15,13 @@ struct UserProfileDetail: View {
     
     var body: some View {
         Form {
-            DatePicker("誕生日", selection: $userProfile.birthday, displayedComponents: .date)
+            DatePicker("birthdate", selection: $userProfile.birthday, displayedComponents: .date)
   
-            Section(header: Text("想定寿命")) {
-                Stepper("\(userProfile.expectedLifeSpan)歳", value: $userProfile.expectedLifeSpan, in: 0...130)
+            Section(header: Text("Life expectancy")) {
+                Stepper("\(userProfile.expectedLifeSpan) years old", value: $userProfile.expectedLifeSpan, in: 0...130)
             }
         }
-        .navigationTitle("編集")
+        .navigationTitle("Edit")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
