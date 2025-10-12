@@ -9,10 +9,12 @@ import SwiftUI
 
 struct LovedOneDetail: View {
     @Bindable var lovedOne: LovedOne
-    let isNew: Bool
+    @State private var isShowSafari: Bool = false
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
+    
+    let isNew: Bool
     
     init(lovedOne: LovedOne, isNew: Bool = false) {
         self.lovedOne = lovedOne
@@ -21,13 +23,25 @@ struct LovedOneDetail: View {
     
     var body: some View {
         Form {
-            TextField("Name", text: $lovedOne.name)
-                .autocorrectionDisabled()
-            
-            DatePicker("Birthdate", selection: $lovedOne.birthday, displayedComponents: .date)
-            
+            Section(header: Text("Name / Birthdate")) {
+                TextField("Name", text: $lovedOne.name)
+                    .autocorrectionDisabled()
+                
+                DatePicker("Birthdate", selection: $lovedOne.birthday, displayedComponents: .date)
+                
+            }
             Section(header: Text("Life expectancy")) {
                 Stepper("\(lovedOne.expectedLifeSpan) years old", value: $lovedOne.expectedLifeSpan, in: 0...130)
+            }
+            
+            Button {
+                isShowSafari.toggle()
+            } label: {
+                Label("Search average lifespan", systemImage: "safari")
+                    .padding(.vertical, 2)
+            }
+            .sheet(isPresented: $isShowSafari) {
+                SafariView(url: URL(string: "https://www.google.com/search?q=平均寿命")!)
             }
         }
         .navigationTitle(isNew ? "Add Loved one" : "Edit Loved one")

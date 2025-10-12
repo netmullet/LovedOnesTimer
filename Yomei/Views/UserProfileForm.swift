@@ -52,7 +52,7 @@ struct UserProfileForm: View {
             Button {
                 isShowSafari.toggle()
             } label: {
-                Text("Search average lifespan on Safari")
+                Label("Search average lifespan", systemImage: "safari")
                     .padding(.vertical, 2)
             }
             .buttonStyle(.bordered)

@@ -15,7 +15,7 @@ struct LovedOneList: View {
     
     var body: some View {
         HStack {
-            Text("大切な人リスト")
+            Text("Loved Ones List")
                 .font(.headline)
             Spacer()
             Button(action: addLovedOne) {
@@ -47,7 +47,7 @@ struct LovedOneList: View {
                 ContentUnavailableView {
                     Label("Add Loved ones", systemImage: "person.and.person")
                 } description: {
-                    Text("Add a loved one from the plus button above.")
+                    Text("Add your loved one from the plus button above.")
                 }
             }
         }

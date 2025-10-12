@@ -28,10 +28,6 @@ struct ContentView: View {
         NavigationStack {
             VStack {
                 HStack {
-                    Text("Yomei")
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
                     Spacer()
                     
                     Button(action: {

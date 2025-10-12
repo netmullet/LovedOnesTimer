@@ -23,13 +23,12 @@ struct SettingsView: View {
                 ) {
                     Text("Share")
                 }
-
             }
-            .navigationTitle("設定")
+            .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("完了") {
+                    Button("Done") {
                         dismiss()
                     }
                 }
