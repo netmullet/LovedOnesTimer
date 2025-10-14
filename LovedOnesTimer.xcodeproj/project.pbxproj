@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		61BDDB012DD998860024EB0F /* Yomei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yomei.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		61BDDB012DD998860024EB0F /* LovedOnesTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LovedOnesTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		61303FCC2E96A667007CF6EF /* Exceptions for "Yomei" folder in "Yomei" target */ = {
+		61303FCC2E96A667007CF6EF /* Exceptions for "LovedOnesTimer" folder in "LovedOnesTimer" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 61BDDB002DD998860024EB0F /* Yomei */;
+			target = 61BDDB002DD998860024EB0F /* LovedOnesTimer */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		61BDDB032DD998860024EB0F /* Yomei */ = {
+		61BDDB032DD998860024EB0F /* LovedOnesTimer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				61303FCC2E96A667007CF6EF /* Exceptions for "Yomei" folder in "Yomei" target */,
+				61303FCC2E96A667007CF6EF /* Exceptions for "LovedOnesTimer" folder in "LovedOnesTimer" target */,
 			);
-			path = Yomei;
+			path = LovedOnesTimer;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -45,7 +45,7 @@
 		61BDDAF82DD998860024EB0F = {
 			isa = PBXGroup;
 			children = (
-				61BDDB032DD998860024EB0F /* Yomei */,
+				61BDDB032DD998860024EB0F /* LovedOnesTimer */,
 				61BDDB022DD998860024EB0F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,7 +53,7 @@
 		61BDDB022DD998860024EB0F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				61BDDB012DD998860024EB0F /* Yomei.app */,
+				61BDDB012DD998860024EB0F /* LovedOnesTimer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,9 +61,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		61BDDB002DD998860024EB0F /* Yomei */ = {
+		61BDDB002DD998860024EB0F /* LovedOnesTimer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 61BDDB0F2DD998870024EB0F /* Build configuration list for PBXNativeTarget "Yomei" */;
+			buildConfigurationList = 61BDDB0F2DD998870024EB0F /* Build configuration list for PBXNativeTarget "LovedOnesTimer" */;
 			buildPhases = (
 				61BDDAFD2DD998860024EB0F /* Sources */,
 				61BDDAFE2DD998860024EB0F /* Frameworks */,
@@ -74,13 +74,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				61BDDB032DD998860024EB0F /* Yomei */,
+				61BDDB032DD998860024EB0F /* LovedOnesTimer */,
 			);
-			name = Yomei;
+			name = LovedOnesTimer;
 			packageProductDependencies = (
 			);
 			productName = Yomei;
-			productReference = 61BDDB012DD998860024EB0F /* Yomei.app */;
+			productReference = 61BDDB012DD998860024EB0F /* LovedOnesTimer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -98,7 +98,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 61BDDAFC2DD998860024EB0F /* Build configuration list for PBXProject "Yomei" */;
+			buildConfigurationList = 61BDDAFC2DD998860024EB0F /* Build configuration list for PBXProject "LovedOnesTimer" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -113,7 +113,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				61BDDB002DD998860024EB0F /* Yomei */,
+				61BDDB002DD998860024EB0F /* LovedOnesTimer */,
 			);
 		};
 /* End PBXProject section */
@@ -198,6 +198,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -254,6 +255,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -267,11 +269,11 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Yomei/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"LovedOnesTimer/Preview Content\"";
 				DEVELOPMENT_TEAM = L9ZNN7856S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Yomei/Info.plist;
+				INFOPLIST_FILE = LovedOnesTimer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,11 +301,11 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Yomei/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"LovedOnesTimer/Preview Content\"";
 				DEVELOPMENT_TEAM = L9ZNN7856S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Yomei/Info.plist;
+				INFOPLIST_FILE = LovedOnesTimer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -325,7 +327,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		61BDDAFC2DD998860024EB0F /* Build configuration list for PBXProject "Yomei" */ = {
+		61BDDAFC2DD998860024EB0F /* Build configuration list for PBXProject "LovedOnesTimer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				61BDDB0D2DD998870024EB0F /* Debug */,
@@ -334,7 +336,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		61BDDB0F2DD998870024EB0F /* Build configuration list for PBXNativeTarget "Yomei" */ = {
+		61BDDB0F2DD998870024EB0F /* Build configuration list for PBXNativeTarget "LovedOnesTimer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				61BDDB102DD998870024EB0F /* Debug */,

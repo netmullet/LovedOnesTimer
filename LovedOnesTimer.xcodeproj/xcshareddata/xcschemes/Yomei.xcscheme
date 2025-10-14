@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "61BDDB002DD998860024EB0F"
-               BuildableName = "Yomei.app"
-               BlueprintName = "Yomei"
-               ReferencedContainer = "container:Yomei.xcodeproj">
+               BuildableName = "LovedOnesTimer.app"
+               BlueprintName = "LovedOnesTimer"
+               ReferencedContainer = "container:LovedOnesTimer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "61BDDB002DD998860024EB0F"
-            BuildableName = "Yomei.app"
-            BlueprintName = "Yomei"
-            ReferencedContainer = "container:Yomei.xcodeproj">
+            BuildableName = "LovedOnesTimer.app"
+            BlueprintName = "LovedOnesTimer"
+            ReferencedContainer = "container:LovedOnesTimer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "61BDDB002DD998860024EB0F"
-            BuildableName = "Yomei.app"
-            BlueprintName = "Yomei"
-            ReferencedContainer = "container:Yomei.xcodeproj">
+            BuildableName = "LovedOnesTimer.app"
+            BlueprintName = "LovedOnesTimer"
+            ReferencedContainer = "container:LovedOnesTimer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

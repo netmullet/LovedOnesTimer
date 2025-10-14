@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct YomeiApp: App {
+struct LovedOnesTimerApp: App {
     @AppStorage("isOnboarding") var isOnboarding: Bool = true
     
     var body: some Scene {
