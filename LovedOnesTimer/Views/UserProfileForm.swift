@@ -31,7 +31,7 @@ struct UserProfileForm: View {
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
             
-            DatePicker("Select a date", selection: $birthday, in:
+            DatePicker("Select your birthdate", selection: $birthday, in:
                         Date.distantPast...Date.now, displayedComponents: .date)
             .datePickerStyle(.wheel)
             .environment(\.locale, Locale(identifier: "ja_JP"))
@@ -46,7 +46,7 @@ struct UserProfileForm: View {
             Stepper("\(expectedLifespan) years old", value: $expectedLifespan, in: 1...130)
                 .font(.title2)
                 .fontWeight(.semibold)
-                .padding(.horizontal, 50)
+                .padding(.horizontal, 70)
                 .padding()
             
             Button {
@@ -70,8 +70,7 @@ struct UserProfileForm: View {
                         .padding(.vertical, 8)
                         .padding(.horizontal, 128)
                 }
-                .tint(.blueGradientBottom)
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.glassProminent)
                 .padding(.top, 80)
                 
             } else {
@@ -80,7 +79,7 @@ struct UserProfileForm: View {
                     
                     saveUserProfile()
                 } label: {
-                    Text("はじめる")
+                    Text("START")
                         .padding(.vertical, 8)
                         .padding(.horizontal, 128)
                 }

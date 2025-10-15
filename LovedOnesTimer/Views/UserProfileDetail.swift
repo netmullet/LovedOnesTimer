@@ -19,7 +19,7 @@ struct UserProfileDetail: View {
             DatePicker("Birthdate", selection: $userProfile.birthday, displayedComponents: .date)
   
             Section(header: Text("Life expectancy")) {
-                Stepper("\(userProfile.expectedLifeSpan) years old", value: $userProfile.expectedLifeSpan, in: 0...130)
+                Stepper("\(userProfile.expectedLifeSpan) years old", value: $userProfile.expectedLifeSpan, in: 1...130)
             }
             
             Button {

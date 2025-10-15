@@ -21,16 +21,13 @@ struct WelcomePage: View {
                 .multilineTextAlignment(.center)
 
             Text("""
-            It counts down the days left for you and the people you love.
-            A gentle reminder to cherish today 
-            — before it becomes “I wish I had…”
+            It counts down the days left for you and the people you love. A gentle reminder to cherish today — before it becomes “I wish I had…”
             """)
             .font(.title3)
             .multilineTextAlignment(.center)
             .lineSpacing(6)
-            .padding()
+            .padding(20)
         }
-
     }
 }
 

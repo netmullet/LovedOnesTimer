@@ -31,7 +31,7 @@ struct LovedOneDetail: View {
                 
             }
             Section(header: Text("Life expectancy")) {
-                Stepper("\(lovedOne.expectedLifeSpan) years old", value: $lovedOne.expectedLifeSpan, in: 0...130)
+                Stepper("\(lovedOne.expectedLifeSpan) years old", value: $lovedOne.expectedLifeSpan, in: 1...130)
             }
             
             Button {
