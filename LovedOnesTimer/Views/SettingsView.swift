@@ -18,8 +18,10 @@ struct SettingsView: View {
                     openURL(URL(string: "https://google.com")!)
                 }
                 
-                ShareLink(item: URL(
-                    string: "https://google.com")!
+                ShareLink(
+                    item: Image(.appIcon),
+                    message: Text("https://google.com"),
+                    preview: SharePreview("")
                 ) {
                     Text("Share")
                 }
