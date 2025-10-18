@@ -10,9 +10,11 @@ import SwiftUI
 struct LovedOneDetail: View {
     @Bindable var lovedOne: LovedOne
     @State private var isShowSafari: Bool = false
+    @State private var renderedImage = Image(systemName: "photo")
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
+    @Environment(\.displayScale) var displayScale
     
     let isNew: Bool
     
@@ -43,6 +45,10 @@ struct LovedOneDetail: View {
             .sheet(isPresented: $isShowSafari) {
                 SafariView(url: URL(string: "https://www.google.com/search?q=平均寿命")!)
             }
+            
+            Section {
+                ShareLink("Share the timer", item: renderedImage, preview: SharePreview(Text("Shared image"), image: renderedImage))
+            }
         }
         .navigationTitle(isNew ? "Add Loved one" : "Edit Loved one")
         .navigationBarTitleDisplayMode(.inline)
@@ -60,6 +66,17 @@ struct LovedOneDetail: View {
                     }
                 }
             }
+        }
+        .onAppear { renderImage() }
+    }
+    
+    @MainActor func renderImage() {
+        let renderer = ImageRenderer(content: LovedOneCard(lovedOne: lovedOne))
+        
+        renderer.scale = displayScale
+        
+        if let uiImage = renderer.uiImage {
+            renderedImage = Image(uiImage: uiImage)
         }
     }
 }
