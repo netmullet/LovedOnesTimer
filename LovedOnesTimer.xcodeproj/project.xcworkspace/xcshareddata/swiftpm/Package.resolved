@@ -1,6 +1,15 @@
 {
-  "originHash" : "3b9752ff554d5fdc91a7c01c2322a5d851b0979c36f02eb55188d9ab9e3d7e77",
+  "originHash" : "f54f9dbbe6238115bf6efc669501a974ea1a6e06013751f40860e78b201634bc",
   "pins" : [
+    {
+      "identity" : "admobui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Uhucream/AdMobUI.git",
+      "state" : {
+        "revision" : "48ce94c3aa8fa06383c660f669d483058c7f2211",
+        "version" : "1.0.2"
+      }
+    },
     {
       "identity" : "swift-package-manager-google-mobile-ads",
       "kind" : "remoteSourceControl",
