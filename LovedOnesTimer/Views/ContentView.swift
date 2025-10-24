@@ -53,7 +53,7 @@ struct ContentView: View {
                             UserProfileCard(userProfile: userProfile)
                         }
                     }
-                    .padding()
+                    .padding([.horizontal, .bottom])
                     
                     LovedOneList()
                     
@@ -65,18 +65,6 @@ struct ContentView: View {
                 }
                 .background(.appBackground)
             }
-            // Host the banner in a GeometryReader so we can pass the current width to compute an adaptive size.
-            GeometryReader { geo in
-                BannerAdView(width: geo.size.width)
-                    .frame(maxWidth: .infinity) // Reserve typical banner height; adaptive banners may adjust internally
-                    .background(.ultraThinMaterial) // Slight material background to separate ad from content visually
-//                    .padding(.bottom, geo.safeAreaInsets.bottom)
-
-                    .ignoresSafeArea(edges: .bottom) // Allow the banner to extend to the bottom edge safely
-                    .onAppear { availableWidth = geo.size.width } // Initialize width on first layout
-                    .onChange(of: geo.size.width) { availableWidth = geo.size.width } // Update width as the device rotates or layout changes
-            }
-            .frame(height: 50, alignment: .bottom) // Constrain the GeometryReader's height so it doesn't take over the layout
         }
     }
 }

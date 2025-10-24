@@ -34,25 +34,29 @@ struct LovedOneDetail: View {
                 DatePicker("Birthdate", selection: $lovedOne.birthday, displayedComponents: .date)
                 
             }
+            
             Section(header: Text("Life expectancy")) {
                 Stepper("\(lovedOne.expectedLifeSpan) years old", value: $lovedOne.expectedLifeSpan, in: 1...130)
             }
             
-            Button {
-                isShowSafari.toggle()
-            } label: {
-                Label("Search average lifespan", systemImage: "safari")
-                    .padding(.vertical, 2)
-            }
-            .sheet(isPresented: $isShowSafari) {
-                SafariView(url: URL(string: "https://www.google.com/search?q=平均寿命")!)
+            Section {
+                Button {
+                    isShowSafari.toggle()
+                } label: {
+                    Label("Search average lifespan", systemImage: "safari")
+                        .padding(.vertical, 2)
+                }
+                .sheet(isPresented: $isShowSafari) {
+                    SafariView(url: URL(string: "https://www.google.com/search?q=平均寿命")!)
+                }
             }
             
             Section {
                 ShareLink("Share the timer", item: renderedImage, preview: SharePreview(Text("Shared image"), image: renderedImage))
             }
             
-            NativeAdvertisement(adUnitId: "ca-app-pub-3940256099942544/3986624511") { loadedAd, _ in
+            Section {
+                NativeAdvertisement(adUnitId: admobNativeUnitId) { loadedAd, _ in
                     HStack {
                         if let icon = loadedAd?.icon?.image {
                             Image(uiImage: icon)
@@ -79,9 +83,10 @@ struct LovedOneDetail: View {
                         }
                         .padding(.horizontal)
                     }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .cornerRadius(12)
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .cornerRadius(12)
+                }
             }
         }
         .navigationTitle(isNew ? "Add Loved one" : "Edit Loved one")
@@ -102,10 +107,19 @@ struct LovedOneDetail: View {
             }
         }
         .onAppear { renderImage() }
+        .onChange(of: lovedOne.birthday) {
+            renderImage()
+        }
+        .onChange(of: lovedOne.expectedLifeSpan) {
+            renderImage()
+        }
     }
     
     @MainActor func renderImage() {
-        let renderer = ImageRenderer(content: LovedOneCard(lovedOne: lovedOne))
+        let card = LovedOneCard(lovedOne: lovedOne)
+            .frame(width: 360, height: 180)
+        
+        let renderer = ImageRenderer(content: card)
         
         renderer.scale = displayScale
         
