@@ -18,26 +18,26 @@ class LovedOne {
         components.day = 1
         return Calendar.current.date(from: components) ?? Date()
     }()
-    
     var expectedLifeSpan: Int = 80
+    var sortOrder: Int
     
-    init(name: String, birthday: Date, expectedLifeSpan: Int) {
+    init(name: String, birthday: Date, expectedLifeSpan: Int, sortOrder: Int) {
         self.name = name
         self.birthday = birthday
         self.expectedLifeSpan = expectedLifeSpan
+        self.sortOrder = sortOrder
     }
     
     static let sampleData = [
-        LovedOne(name: "ひなた", birthday: Date.now, expectedLifeSpan: 80),
-        LovedOne(name: "ゆめ", birthday: Date.now, expectedLifeSpan: 88),
-        LovedOne(name: "れん", birthday: Date.now, expectedLifeSpan: 81),
-        LovedOne(name: "ゆう", birthday: Date.now,  expectedLifeSpan: 82),
+        LovedOne(name: "ひなた", birthday: Date.now, expectedLifeSpan: 80, sortOrder: 0),
+        LovedOne(name: "ゆめ", birthday: Date.now, expectedLifeSpan: 88, sortOrder: 1),
+        LovedOne(name: "れん", birthday: Date.now, expectedLifeSpan: 81, sortOrder: 2),
+        LovedOne(name: "ゆう", birthday: Date.now,  expectedLifeSpan: 82, sortOrder: 3),
     ]
     
     var exactAge: Double {
         let calendar = Calendar.current
         let now = Date()
-        
         let ageComponents = calendar.dateComponents([.year, .month, .day], from: self.birthday, to: now)
         let years = ageComponents.year
         let months = ageComponents.month

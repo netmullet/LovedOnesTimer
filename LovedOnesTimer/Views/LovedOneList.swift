@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct LovedOneList: View {
-    @Query(sort: \LovedOne.name) private var lovedOnes: [LovedOne]
+    @Query(sort: \LovedOne.sortOrder) private var lovedOnes: [LovedOne]
     @Environment(\.modelContext) private var context
     @State private var newLovedOne: LovedOne?
     
@@ -37,6 +37,7 @@ struct LovedOneList: View {
                                     .opacity(0)
                             )
                     }
+                    .onMove(perform: moveLovedOne)
                     .onDelete(perform: deleteLovedOne(indexes:))
                     .listRowSeparator(.hidden)
                     .listRowInsets(EdgeInsets())
@@ -60,9 +61,26 @@ struct LovedOneList: View {
     }
     
     private func addLovedOne() {
-        let newLovedOne = LovedOne(name: "", birthday: Date(timeIntervalSinceReferenceDate: 0), expectedLifeSpan: 80)
+        let maxOrder = lovedOnes.map(\.sortOrder).max() ?? -1
+        let nextOrder = maxOrder + 1
+        
+        let newLovedOne = LovedOne(
+            name: "",
+            birthday: Date(timeIntervalSinceReferenceDate: 0),
+            expectedLifeSpan: 80,
+            sortOrder: nextOrder
+        )
         context.insert(newLovedOne)
         self.newLovedOne = newLovedOne
+    }
+    
+    private func moveLovedOne(from source: IndexSet, to destination: Int) {
+        var ordered = lovedOnes
+        ordered.move(fromOffsets: source, toOffset: destination)
+        
+        for (index, item) in ordered.enumerated() {
+            item.sortOrder = index
+        }
     }
     
     private func deleteLovedOne(indexes: IndexSet) {
@@ -70,7 +88,6 @@ struct LovedOneList: View {
             context.delete(lovedOnes[index])
         }
     }
-    
 }
 
 #Preview {
