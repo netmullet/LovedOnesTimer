@@ -56,12 +56,6 @@ struct ContentView: View {
                     .padding([.horizontal, .bottom])
                     
                     LovedOneList()
-                    
-                    //                Button(action: {
-                    //                    isOnboarding = true
-                    //                }) {
-                    //                    Text("Re-Start")
-                    //                }
                 }
                 .background(.appBackground)
             }

@@ -36,7 +36,8 @@ struct LovedOneDetail: View {
             }
             
             Section(header: Text("Life expectancy")) {
-                Stepper("\(lovedOne.expectedLifeSpan) years old", value: $lovedOne.expectedLifeSpan, in: 1...130)
+                let minAge = Int(lovedOne.exactAge) + 1
+                Stepper("\(lovedOne.expectedLifeSpan) years old", value: $lovedOne.expectedLifeSpan, in: minAge...130)
             }
             
             Section {
@@ -108,6 +109,11 @@ struct LovedOneDetail: View {
         }
         .onAppear { renderImage() }
         .onChange(of: lovedOne.birthday) {
+            let exactAge = Int(lovedOne.exactAge)
+            if lovedOne.expectedLifeSpan < exactAge {
+                lovedOne.expectedLifeSpan = exactAge + 1
+            }
+            
             renderImage()
         }
         .onChange(of: lovedOne.expectedLifeSpan) {

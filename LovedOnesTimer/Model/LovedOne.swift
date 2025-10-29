@@ -29,9 +29,9 @@ class LovedOne {
     }
     
     static let sampleData = [
-        LovedOne(name: "ひなた", birthday: Date.now, expectedLifeSpan: 80, sortOrder: 0),
-        LovedOne(name: "ゆめ", birthday: Date.now, expectedLifeSpan: 88, sortOrder: 1),
-        LovedOne(name: "れん", birthday: Date.now, expectedLifeSpan: 81, sortOrder: 2),
+        LovedOne(name: "あきら", birthday: Date.now, expectedLifeSpan: 75, sortOrder: 0),
+        LovedOne(name: "あさこ", birthday: Date.now, expectedLifeSpan: 88, sortOrder: 1),
+        LovedOne(name: "けんじ", birthday: Date.now, expectedLifeSpan: 81, sortOrder: 2),
         LovedOne(name: "ゆう", birthday: Date.now,  expectedLifeSpan: 82, sortOrder: 3),
     ]
     

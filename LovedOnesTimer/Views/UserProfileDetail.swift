@@ -24,7 +24,8 @@ struct UserProfileDetail: View {
             DatePicker("Birthdate", selection: $userProfile.birthday, displayedComponents: .date)
   
             Section(header: Text("Life expectancy")) {
-                Stepper("\(userProfile.expectedLifeSpan) years old", value: $userProfile.expectedLifeSpan, in: 1...130)
+                let minAge = Int(userProfile.exactAge) + 1
+                Stepper("\(userProfile.expectedLifeSpan) years old", value: $userProfile.expectedLifeSpan, in: minAge...130)
             }
             
             Button {
@@ -77,6 +78,11 @@ struct UserProfileDetail: View {
         }
         .onAppear { renderImage() }
         .onChange(of: userProfile.birthday) {
+            let exactAge = Int(userProfile.exactAge)
+            if userProfile.expectedLifeSpan < exactAge {
+                userProfile.expectedLifeSpan = exactAge + 1
+            }
+            
             renderImage()
         }
         .onChange(of: userProfile.expectedLifeSpan) {

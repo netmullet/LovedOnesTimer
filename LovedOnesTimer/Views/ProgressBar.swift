@@ -11,32 +11,33 @@ struct ProgressBar: View {
     var width: CGFloat = 200
     var height: CGFloat = 20
     var percentage: CGFloat = 70
-    var color1 = Color(.red)
-    var color2 = Color(.blue)
-    
+    var expectedLifeSpan: Int = 80
     
     var body: some View {
         let multiplier = width / 100
         
-        ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: height, style: .continuous)
-                .frame(width: width, height: height)
-                .foregroundColor(.black.opacity(0.1))
+        HStack {
+            Text("0")
             
-            RoundedRectangle(cornerRadius: height, style: .continuous)
-                .frame(width: percentage * multiplier, height: height)
-                .foregroundStyle(.clear)
-                .background(
-                    LinearGradient(
-                        gradient: Gradient(colors: [color1, color2]),
-                        startPoint: .leading,
-                        endPoint: .trailing
+            ZStack(alignment: .leading) {
+                RoundedRectangle(cornerRadius: height, style: .continuous)
+                    .frame(width: width, height: height)
+                    .foregroundColor(.black.opacity(0.1))
+                
+                RoundedRectangle(cornerRadius: height, style: .continuous)
+                    .frame(width: percentage * multiplier, height: height)
+                    .foregroundStyle(.clear)
+                    .background(
+                        LinearGradient(
+                            gradient: Gradient(colors: [Color(.red), Color(.blue)]),
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: height, style: .continuous))
                     )
-                    .clipShape(RoundedRectangle(cornerRadius: height, style: .continuous))
-                )
+            }
+            Text("\(expectedLifeSpan)")
         }
-        
-        
     }
 }
 

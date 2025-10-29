@@ -39,7 +39,7 @@ struct LovedOneCard: View {
                     .fontWeight(.semibold)
             }
             
-            ProgressBar(width: 300, height: 10, percentage: percentage, color1: .red, color2: .blue)
+            ProgressBar(width: 280, height: 10, percentage: percentage, expectedLifeSpan: lovedOne.expectedLifeSpan)
                 .padding(.bottom)
             
         }
