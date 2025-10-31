@@ -39,7 +39,7 @@ struct UserProfileDetail: View {
             }
             
             Section {
-                ShareLink("Share the timer", item: renderedImage, preview: SharePreview(Text("Shared image"), image: renderedImage))
+                ShareLink("Share", item: renderedImage, preview: SharePreview(Text("Shared image"), image: renderedImage))
             }
             
             Section {
