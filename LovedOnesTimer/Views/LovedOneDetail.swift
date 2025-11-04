@@ -6,16 +6,23 @@
 //
 
 import SwiftUI
+import StoreKit
 import AdMobUI
+
 
 struct LovedOneDetail: View {
     @Bindable var lovedOne: LovedOne
     @State private var isShowSafari: Bool = false
     @State private var renderedImage = Image(systemName: "photo")
+    @State private var isShowReviewPrompt: Bool = false
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
     @Environment(\.displayScale) var displayScale
+    @Environment(\.requestReview) private var requestReview
+    
+    @AppStorage("addLovedOneCount") private var addLovedOneCount: Int = 0
+    @AppStorage("hasShownReviewAlert") private var hasShownReviewAlert = false
     
     let isNew: Bool
     let admobNativeUnitId: String = Bundle.main.object(forInfoDictionaryKey: "AdmobNativeUnitId") as! String
@@ -96,7 +103,14 @@ struct LovedOneDetail: View {
             if isNew {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
-                        dismiss()
+                        addLovedOneCount += 1
+                        let threshold = 3
+                        if addLovedOneCount >= threshold && !hasShownReviewAlert { // 永続的に1度だけalertを起動
+                            isShowReviewPrompt = true
+                            hasShownReviewAlert = true
+                        } else {
+                            dismiss()
+                        }
                     }
                 }
                 ToolbarItem(placement: .cancellationAction) {
@@ -118,6 +132,17 @@ struct LovedOneDetail: View {
         }
         .onChange(of: lovedOne.expectedLifeSpan) {
             renderImage()
+        }
+        .alert("How are we doing?", isPresented: $isShowReviewPrompt) {
+            Button("Love it!") {
+                requestReview()
+                dismiss()
+            }
+            Button("Needs work") {
+                dismiss()
+            }
+        } message: {
+            Text("Your reviews help the app even better.")
         }
     }
     
