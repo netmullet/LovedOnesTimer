@@ -15,8 +15,6 @@ struct LovedOneList: View {
     
     var body: some View {
         HStack {
-            Text("Loved Ones List")
-                .font(.headline)
             Spacer()
             Button(action: addLovedOne) {
                 Label("", systemImage: "plus")
@@ -36,6 +34,7 @@ struct LovedOneList: View {
                                 NavigationLink("", destination: LovedOneDetail(lovedOne: lovedOne))
                                     .opacity(0)
                             )
+                            .padding()
                     }
                     .onMove(perform: moveLovedOne)
                     .onDelete(perform: deleteLovedOne(indexes:))

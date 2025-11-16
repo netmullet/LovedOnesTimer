@@ -19,7 +19,6 @@ let orangeGradientColors: [Color] = [
 ]
 
 struct ContentView: View {
-    
     @State private var isShowingSetttings: Bool = false
     @State private var availableWidth: CGFloat = 320
     @AppStorage("isOnboarding") var isOnboarding: Bool?

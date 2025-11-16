@@ -97,7 +97,7 @@ struct LovedOneDetail: View {
                 }
             }
         }
-        .navigationTitle(isNew ? "Add Loved one" : "Edit Loved one")
+        .navigationTitle(isNew ? "Add" : "Edit")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if isNew {

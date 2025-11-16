@@ -45,7 +45,6 @@ struct LovedOneCard: View {
         }
         .foregroundStyle(.white)
         .background(Gradient(colors: blueGradientColors), in: RoundedRectangle(cornerRadius: 30))
-        .padding()
     }
 }
 
