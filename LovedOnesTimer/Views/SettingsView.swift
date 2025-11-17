@@ -1,6 +1,6 @@
 //
 //  SettingsView.swift
-//  Yomei
+//  LovedOnesTimer
 //
 //  Created by Ryo Otsuka on 2025/09/17.
 //
@@ -37,6 +37,7 @@ struct SettingsView: View {
                 HStack{
                     Image(systemName: "envelope")
                         .frame(width: 20, height: 20)
+                        .foregroundStyle(Color.blue)
                     Button("Feedback") {
                         isShowFeedback.toggle()
                     }

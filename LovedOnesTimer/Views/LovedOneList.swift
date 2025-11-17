@@ -1,6 +1,6 @@
 //
 //  LovedOneList.swift
-//  Yomei
+//  LovedOnesTimer
 //
 //  Created by Ryo Otsuka on 2025/07/06.
 //
