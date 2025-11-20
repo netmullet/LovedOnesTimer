@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+
 struct LovedOneList: View {
     @Query(sort: \LovedOne.sortOrder) private var lovedOnes: [LovedOne]
     @Environment(\.modelContext) private var context
@@ -45,9 +46,9 @@ struct LovedOneList: View {
                 .listStyle(.plain)
             } else {
                 ContentUnavailableView {
-                    Label("Add Loved ones", systemImage: "person.and.person")
+                    Label("Add Countdowns", systemImage: "person.and.person")
                 } description: {
-                    Text("Add your loved one from the plus button above.")
+                    Text("Add a countdown from the plus button above.")
                 }
             }
         }

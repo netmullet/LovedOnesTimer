@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+
 let blueGradientColors: [Color] = [
     .blueGradientTop,
     .blueGradientBottom
@@ -19,6 +20,7 @@ let orangeGradientColors: [Color] = [
 ]
 
 struct ContentView: View {
+    @Environment(\.scenePhase) private var scenePhase: ScenePhase
     @State private var isShowingSetttings: Bool = false
     @State private var availableWidth: CGFloat = 320
     @AppStorage("isOnboarding") var isOnboarding: Bool?
@@ -58,6 +60,9 @@ struct ContentView: View {
                 }
                 .background(.appBackground)
             }
+        }
+        .onAppear() {
+            ATTAuthorization.requestIfNeeded()
         }
     }
 }

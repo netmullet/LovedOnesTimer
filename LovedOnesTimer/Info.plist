@@ -11,6 +11,8 @@
 	</array>
 	<key>GADApplicationIdentifier</key>
 	<string>$(ADMOB_APP_ID)</string>
+	<key>Privacy - Tracking Usage Description</key>
+	<string></string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
