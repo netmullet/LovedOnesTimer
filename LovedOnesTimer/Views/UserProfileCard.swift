@@ -41,7 +41,7 @@ struct UserProfileCard: View {
                 }
                 .padding(.bottom)
             
-            ProgressBar(width: 300, height: 20, percentage: percentage, expectedLifeSpan: userProfile.expectedLifeSpan)
+            ProgressBar(width: 280, height: 20, percentage: percentage, expectedLifeSpan: userProfile.expectedLifeSpan)
                 .padding(.bottom)
             }
         .foregroundStyle(.white)

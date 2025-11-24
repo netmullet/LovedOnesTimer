@@ -48,18 +48,6 @@ struct LovedOneDetail: View {
             }
             
             Section {
-                Button {
-                    isShowSafari.toggle()
-                } label: {
-                    Label("Search average lifespan", systemImage: "safari")
-                        .padding(.vertical, 2)
-                }
-                .sheet(isPresented: $isShowSafari) {
-                    SafariView(url: URL(string: "https://www.google.com/search?q=平均寿命")!)
-                }
-            }
-            
-            Section {
                 ShareLink("Share", item: renderedImage, preview: SharePreview(Text("Shared image"), image: renderedImage))
             }
             

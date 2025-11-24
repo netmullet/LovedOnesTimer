@@ -27,37 +27,37 @@ struct UserProfileForm: View {
     var body: some View {
         VStack {
             Text("Enter your date of birth")
-                .font(.title)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.center)
-            
-            DatePicker("Select your birthdate", selection: $birthday, in:
-                        Date.distantPast...Date.now, displayedComponents: .date)
-            .datePickerStyle(.wheel)
-            .environment(\.locale, Locale(identifier: "ja_JP"))
-            .labelsHidden()
-            .padding()
-            
-            Text("Select your \nexpected lifespan")
-                .font(.title)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.center)
-
-            Stepper("\(expectedLifespan) years old", value: $expectedLifespan, in: 1...130)
                 .font(.title2)
                 .fontWeight(.semibold)
-                .padding(.horizontal, 70)
+                .fixedSize(horizontal: false, vertical: true)
+            
+            DatePicker("", selection: $birthday, in:
+                        Date.distantPast...Date.now, displayedComponents: .date)
+            .datePickerStyle(.wheel)
+//            .environment(\.locale, Locale(identifier: "ja_JP"))
+            .labelsHidden()
+            
+            Text("Select your expected lifespan")
+                .font(.title2)
+                .fontWeight(.semibold)
+                .fixedSize(horizontal: false, vertical: true)
+
+            Stepper("\(expectedLifespan) years old", value: $expectedLifespan, in: 1...130)
+                .font(.title3)
+                .fontWeight(.semibold)
+                .padding(.horizontal, 50)
                 .padding()
             
             Button {
                 isShowSafari.toggle()
             } label: {
-                Label("Search average lifespan", systemImage: "safari")
+                Label("Search life expectancy", systemImage: "safari")
                     .padding(.vertical, 2)
             }
+            .padding(.bottom)
             .buttonStyle(.bordered)
             .sheet(isPresented: $isShowSafari) {
-                SafariView(url: URL(string: "https://www.google.com/search?q=平均寿命")!)
+                SafariView(url: URL(string: "https://www.worldometers.info/demographics/life-expectancy/#countries-ranked-by-life-expectancy")!)
             }
             
             if #available(iOS 26.0, *) {
@@ -67,11 +67,13 @@ struct UserProfileForm: View {
                     saveUserProfile()
                 } label: {
                     Text("START")
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 128)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .padding(.vertical, 6)
+                        .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.glassProminent)
-                .padding(.top, 80)
+                .padding()
                 
             } else {
                 Button {
@@ -80,12 +82,14 @@ struct UserProfileForm: View {
                     saveUserProfile()
                 } label: {
                     Text("START")
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 128)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .padding()
+                        .frame(maxWidth: .infinity)
                 }
                 .tint(.blueGradientBottom)
                 .buttonStyle(.borderedProminent)
-                .padding(.top, 80)
+                .padding()
             }
         }
     }
