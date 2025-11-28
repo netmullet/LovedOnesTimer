@@ -34,7 +34,6 @@ struct UserProfileForm: View {
             DatePicker("", selection: $birthday, in:
                         Date.distantPast...Date.now, displayedComponents: .date)
             .datePickerStyle(.wheel)
-//            .environment(\.locale, Locale(identifier: "ja_JP"))
             .labelsHidden()
             
             Text("Select your expected lifespan")

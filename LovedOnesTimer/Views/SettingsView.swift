@@ -24,13 +24,7 @@ struct SettingsView: View {
                         .frame(width: 20, height: 20)
                         .foregroundStyle(Color.yellow)
                     Button("Rate This App") {
-                        let url = "https://apps.apple.com/app/idYOURAPPSTOREID?action=write-review"
-                        
-                        guard let writeReviewURL = URL(string: url) else {
-                            fatalError("Expected a valid URL")
-                        }
-                        
-                        openURL(writeReviewURL)
+                        openURL(URL(string: "https://apps.apple.com/jp/app/id6755080194?action=write-review")!)
                     }
                 }
                 
@@ -49,7 +43,7 @@ struct SettingsView: View {
                 HStack {
                     Image(systemName: "square.and.arrow.up")
                         .frame(width: 20, height: 20)
-                    ShareLink(item: URL(string: "https://developer.apple.com/xcode/swiftui/")!) {
+                    ShareLink(item: URL(string: "https://apps.apple.com/app/id6755080194")!) {
                         Text("Share This App")
                     }
                 }
