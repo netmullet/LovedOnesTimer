@@ -9,6 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct UserProfileCard: View {
+    let orangeGradientColors: [Color] = [
+        .orangeGradientTop,
+        .orangeGradientBottom
+    ]
 
     var userProfile: UserProfile
     

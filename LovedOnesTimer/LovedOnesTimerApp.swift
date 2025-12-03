@@ -12,7 +12,6 @@ import GoogleMobileAds
 @main
 struct LovedOnesTimerApp: App {
     @AppStorage("isOnboarding") var isOnboarding: Bool = true
-//    @Environment(\.scenePhase) private var scenePhase: ScenePhase
     
     init() {
         MobileAds.shared.start { status in }
@@ -26,11 +25,6 @@ struct LovedOnesTimerApp: App {
                 ContentView()
             }
         }
-//        .onChange(of: scenePhase) { _, newPhase in
-//            if newPhase == .active {
-//                ATTAuthorization.requestIfNeeded()
-//            }
-//        }
         .modelContainer(for: [UserProfile.self, LovedOne.self])
     }
 }

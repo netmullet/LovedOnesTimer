@@ -9,16 +9,6 @@ import SwiftUI
 import SwiftData
 
 
-let blueGradientColors: [Color] = [
-    .blueGradientTop,
-    .blueGradientBottom
-]
-
-let orangeGradientColors: [Color] = [
-    .orangeGradientTop,
-    .orangeGradientBottom
-]
-
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase: ScenePhase
     @State private var isShowingSetttings: Bool = false

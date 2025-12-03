@@ -9,6 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct LovedOneCard: View {
+    let blueGradientColors: [Color] = [
+        .blueGradientTop,
+        .blueGradientBottom
+    ]
+    
     var lovedOne: LovedOne
     
     var body: some View {
