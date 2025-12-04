@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AdMobUI
+import WidgetKit
 
 struct UserProfileDetail: View {
     @Bindable var userProfile: UserProfile
@@ -14,7 +15,6 @@ struct UserProfileDetail: View {
     @State private var renderedImage = Image(systemName: "photo")
     
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var context
     @Environment(\.displayScale) var displayScale
     
     let admobNativeUnitId: String = Bundle.main.object(forInfoDictionaryKey: "AdmobNativeUnitId") as! String
@@ -74,11 +74,12 @@ struct UserProfileDetail: View {
             if userProfile.expectedLifeSpan < exactAge {
                 userProfile.expectedLifeSpan = exactAge + 1
             }
-            
             renderImage()
+            WidgetCenter.shared.reloadAllTimelines()
         }
         .onChange(of: userProfile.expectedLifeSpan) {
             renderImage()
+            WidgetCenter.shared.reloadAllTimelines()
         }
         .navigationTitle("Edit")
         .navigationBarTitleDisplayMode(.inline)

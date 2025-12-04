@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct UserProfileForm: View {
     
@@ -95,6 +96,7 @@ struct UserProfileForm: View {
     
     private func saveUserProfile() {
         context.insert(UserProfile(birthday: birthday, expectedLifeSpan: expectedLifespan))
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 
