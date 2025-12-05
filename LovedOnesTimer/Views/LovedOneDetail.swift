@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StoreKit
+import WidgetKit
 import AdMobUI
 
 
@@ -115,10 +116,11 @@ struct LovedOneDetail: View {
             if lovedOne.expectedLifeSpan < exactAge {
                 lovedOne.expectedLifeSpan = exactAge + 1
             }
-            
+            WidgetCenter.shared.reloadAllTimelines()
             renderImage()
         }
         .onChange(of: lovedOne.expectedLifeSpan) {
+            WidgetCenter.shared.reloadAllTimelines()
             renderImage()
         }
         .alert("How are we doing?", isPresented: $isShowReviewPrompt) {

@@ -1,6 +1,6 @@
 //
-//  UserWidget.swift
-//  UserWidget
+//  StaticWidget.swift
+//  StaticWidget
 //
 //  Created by Ryo Otsuka on 2025/12/03.
 //
@@ -51,7 +51,7 @@ struct UserProfileEntry: TimelineEntry {
     let userProfiles: [UserProfile]
 }
 
-struct UserWidgetEntryView : View {
+struct StaticWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
@@ -64,23 +64,24 @@ struct UserWidgetEntryView : View {
     }
 }
 
-struct UserWidget: Widget {
-    let kind: String = "UserWidget"
+struct StaticWidget: Widget {
+    let kind: String = "StaticWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            UserWidgetEntryView(entry: entry)
+            StaticWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("My Countdown")
+        .description("This is your countdown widget.")
         .supportedFamilies([.systemMedium])
         .contentMarginsDisabled()
     }
 }
 
+
 #Preview(as: .systemSmall) {
-    UserWidget()
+    StaticWidget()
 } timeline: {
     UserProfileEntry(date: .now, userProfiles: [])
 }

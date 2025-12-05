@@ -9,8 +9,9 @@ import WidgetKit
 import SwiftUI
 
 @main
-struct UserWidgetBundle: WidgetBundle {
+struct CountDownWidgetBundle: WidgetBundle {
     var body: some Widget {
-        UserWidget()
+        StaticWidget()
+        ConfigurableWidget()
     }
 }

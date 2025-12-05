@@ -11,7 +11,7 @@
 		613041952EAA71DD007CF6EF /* AdMobUI in Frameworks */ = {isa = PBXBuildFile; productRef = 613041942EAA71DD007CF6EF /* AdMobUI */; };
 		617369B12EDFE08200796F41 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617369B02EDFE08200796F41 /* WidgetKit.framework */; };
 		617369B32EDFE08200796F41 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617369B22EDFE08200796F41 /* SwiftUI.framework */; };
-		617369BE2EDFE08300796F41 /* UserWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 617369AE2EDFE08200796F41 /* UserWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		617369BE2EDFE08300796F41 /* CountDownWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 617369AE2EDFE08200796F41 /* CountDownWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +31,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				617369BE2EDFE08300796F41 /* UserWidgetExtension.appex in Embed Foundation Extensions */,
+				617369BE2EDFE08300796F41 /* CountDownWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,10 +39,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		617369AE2EDFE08200796F41 /* UserWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UserWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		617369AE2EDFE08200796F41 /* CountDownWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CountDownWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		617369B02EDFE08200796F41 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		617369B22EDFE08200796F41 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		617369C42EDFE0A100796F41 /* UserWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UserWidgetExtension.entitlements; sourceTree = "<group>"; };
+		617369C42EDFE0A100796F41 /* CountDownWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CountDownWidgetExtension.entitlements; sourceTree = "<group>"; };
 		61BDDB012DD998860024EB0F /* LovedOnesTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LovedOnesTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -54,39 +54,43 @@
 			);
 			target = 61BDDB002DD998860024EB0F /* LovedOnesTimer */;
 		};
-		617369C22EDFE08300796F41 /* Exceptions for "UserWidget" folder in "UserWidgetExtension" target */ = {
+		617369C22EDFE08300796F41 /* Exceptions for "CountDownWidget" folder in "CountDownWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 617369AD2EDFE08200796F41 /* UserWidgetExtension */;
+			target = 617369AD2EDFE08200796F41 /* CountDownWidgetExtension */;
 		};
-		617369C62EDFE31800796F41 /* Exceptions for "LovedOnesTimer" folder in "UserWidgetExtension" target */ = {
+		617369C62EDFE31800796F41 /* Exceptions for "LovedOnesTimer" folder in "CountDownWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
+				Localizable.xcstrings,
+				Model/LovedOne.swift,
+				Model/SharedModelContainer.swift,
 				Model/UserProfile.swift,
 				Views/Helpers/ProgressBar.swift,
+				Views/LovedOneCard.swift,
 				Views/UserProfileCard.swift,
 			);
-			target = 617369AD2EDFE08200796F41 /* UserWidgetExtension */;
+			target = 617369AD2EDFE08200796F41 /* CountDownWidgetExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		617369B42EDFE08200796F41 /* UserWidget */ = {
+		617369B42EDFE08200796F41 /* CountDownWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				617369C22EDFE08300796F41 /* Exceptions for "UserWidget" folder in "UserWidgetExtension" target */,
+				617369C22EDFE08300796F41 /* Exceptions for "CountDownWidget" folder in "CountDownWidgetExtension" target */,
 			);
-			path = UserWidget;
+			path = CountDownWidget;
 			sourceTree = "<group>";
 		};
 		61BDDB032DD998860024EB0F /* LovedOnesTimer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				61303FCC2E96A667007CF6EF /* Exceptions for "LovedOnesTimer" folder in "LovedOnesTimer" target */,
-				617369C62EDFE31800796F41 /* Exceptions for "LovedOnesTimer" folder in "UserWidgetExtension" target */,
+				617369C62EDFE31800796F41 /* Exceptions for "LovedOnesTimer" folder in "CountDownWidgetExtension" target */,
 			);
 			path = LovedOnesTimer;
 			sourceTree = "<group>";
@@ -127,9 +131,9 @@
 		61BDDAF82DD998860024EB0F = {
 			isa = PBXGroup;
 			children = (
-				617369C42EDFE0A100796F41 /* UserWidgetExtension.entitlements */,
+				617369C42EDFE0A100796F41 /* CountDownWidgetExtension.entitlements */,
 				61BDDB032DD998860024EB0F /* LovedOnesTimer */,
-				617369B42EDFE08200796F41 /* UserWidget */,
+				617369B42EDFE08200796F41 /* CountDownWidget */,
 				617369AF2EDFE08200796F41 /* Frameworks */,
 				61BDDB022DD998860024EB0F /* Products */,
 			);
@@ -139,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				61BDDB012DD998860024EB0F /* LovedOnesTimer.app */,
-				617369AE2EDFE08200796F41 /* UserWidgetExtension.appex */,
+				617369AE2EDFE08200796F41 /* CountDownWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,9 +151,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		617369AD2EDFE08200796F41 /* UserWidgetExtension */ = {
+		617369AD2EDFE08200796F41 /* CountDownWidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 617369BF2EDFE08300796F41 /* Build configuration list for PBXNativeTarget "UserWidgetExtension" */;
+			buildConfigurationList = 617369BF2EDFE08300796F41 /* Build configuration list for PBXNativeTarget "CountDownWidgetExtension" */;
 			buildPhases = (
 				617369AA2EDFE08200796F41 /* Sources */,
 				617369AB2EDFE08200796F41 /* Frameworks */,
@@ -160,13 +164,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				617369B42EDFE08200796F41 /* UserWidget */,
+				617369B42EDFE08200796F41 /* CountDownWidget */,
 			);
-			name = UserWidgetExtension;
+			name = CountDownWidgetExtension;
 			packageProductDependencies = (
 			);
 			productName = UserWidgetExtension;
-			productReference = 617369AE2EDFE08200796F41 /* UserWidgetExtension.appex */;
+			productReference = 617369AE2EDFE08200796F41 /* CountDownWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		61BDDB002DD998860024EB0F /* LovedOnesTimer */ = {
@@ -233,7 +237,7 @@
 			projectRoot = "";
 			targets = (
 				61BDDB002DD998860024EB0F /* LovedOnesTimer */,
-				617369AD2EDFE08200796F41 /* UserWidgetExtension */,
+				617369AD2EDFE08200796F41 /* CountDownWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -275,7 +279,7 @@
 /* Begin PBXTargetDependency section */
 		617369BD2EDFE08300796F41 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 617369AD2EDFE08200796F41 /* UserWidgetExtension */;
+			target = 617369AD2EDFE08200796F41 /* CountDownWidgetExtension */;
 			targetProxy = 617369BC2EDFE08300796F41 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -286,32 +290,36 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = UserWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CountDownWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = L9ZNN7856S;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UserWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = UserWidget;
+				INFOPLIST_FILE = CountDownWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CountDownWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.netmullet.LovedOnesTimer.UserWidget;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netmullet.LovedOnesTimer.CountDownWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -320,31 +328,35 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = UserWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CountDownWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L9ZNN7856S;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UserWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = UserWidget;
+				INFOPLIST_FILE = CountDownWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CountDownWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.netmullet.LovedOnesTimer.UserWidget;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netmullet.LovedOnesTimer.CountDownWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -488,7 +500,7 @@
 				CODE_SIGN_ENTITLEMENTS = LovedOnesTimer/LovedOnesTimer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LovedOnesTimer/Preview Content\"";
 				DEVELOPMENT_TEAM = L9ZNN7856S;
 				ENABLE_PREVIEWS = YES;
@@ -510,7 +522,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.netmullet.LovedOnesTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -534,7 +546,7 @@
 				CODE_SIGN_ENTITLEMENTS = LovedOnesTimer/LovedOnesTimer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LovedOnesTimer/Preview Content\"";
 				DEVELOPMENT_TEAM = L9ZNN7856S;
 				ENABLE_PREVIEWS = YES;
@@ -556,7 +568,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.netmullet.LovedOnesTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -573,7 +585,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		617369BF2EDFE08300796F41 /* Build configuration list for PBXNativeTarget "UserWidgetExtension" */ = {
+		617369BF2EDFE08300796F41 /* Build configuration list for PBXNativeTarget "CountDownWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				617369C02EDFE08300796F41 /* Debug */,

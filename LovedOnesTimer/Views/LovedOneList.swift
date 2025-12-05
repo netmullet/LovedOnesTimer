@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import WidgetKit
 
 
 struct LovedOneList: View {
@@ -71,6 +72,7 @@ struct LovedOneList: View {
             sortOrder: nextOrder
         )
         context.insert(newLovedOne)
+        WidgetCenter.shared.reloadAllTimelines()
         self.newLovedOne = newLovedOne
     }
     
