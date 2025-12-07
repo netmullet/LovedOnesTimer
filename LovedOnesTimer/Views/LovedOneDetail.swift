@@ -12,15 +12,15 @@ import AdMobUI
 
 
 struct LovedOneDetail: View {
-    @Bindable var lovedOne: LovedOne
-    @State private var isShowSafari: Bool = false
-    @State private var renderedImage = Image(systemName: "photo")
-    @State private var isShowReviewPrompt: Bool = false
-    
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
     @Environment(\.displayScale) var displayScale
     @Environment(\.requestReview) private var requestReview
+    
+    @Bindable var lovedOne: LovedOne
+    @State private var draftBirthday: Date = .now
+    @State private var draftExpectedLifeSpan: Int = 80
+    @State private var isShowReviewPrompt: Bool = false
     
     @AppStorage("addLovedOneCount") private var addLovedOneCount: Int = 0
     @AppStorage("hasShownReviewAlert") private var hasShownReviewAlert = false
@@ -39,17 +39,12 @@ struct LovedOneDetail: View {
                 TextField("Name", text: $lovedOne.name)
                     .autocorrectionDisabled()
                 
-                DatePicker("Birthdate", selection: $lovedOne.birthday, displayedComponents: .date)
-                
+                DatePicker("Birthdate", selection: $draftBirthday, displayedComponents: .date)
             }
             
             Section(header: Text("Life expectancy")) {
-                let minAge = Int(lovedOne.exactAge) + 1
-                Stepper("\(lovedOne.expectedLifeSpan) years old", value: $lovedOne.expectedLifeSpan, in: minAge...130)
-            }
-            
-            Section {
-                ShareLink("Share", item: renderedImage, preview: SharePreview(Text("Shared image"), image: renderedImage))
+                let minAge = calculateAge(from: draftBirthday) + 1
+                Stepper("\(draftExpectedLifeSpan) years old", value: $draftExpectedLifeSpan, in: minAge...130)
             }
             
             Section {
@@ -92,11 +87,21 @@ struct LovedOneDetail: View {
             if isNew {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
+                        lovedOne.birthday = draftBirthday
+                        lovedOne.expectedLifeSpan = draftExpectedLifeSpan
+                        do {
+                            try context.save()
+                        } catch {
+                            print("Save lovedOne instance failed: \(error)")
+                        }
+                        WidgetCenter.shared.reloadAllTimelines()
+                        
                         addLovedOneCount += 1
                         let threshold = 3
-                        if addLovedOneCount >= threshold && !hasShownReviewAlert { // 永続的に1度だけalertを起動
+                        if addLovedOneCount >= threshold && !hasShownReviewAlert {
                             isShowReviewPrompt = true
                             hasShownReviewAlert = true
+                            dismiss()
                         } else {
                             dismiss()
                         }
@@ -108,21 +113,33 @@ struct LovedOneDetail: View {
                         dismiss()
                     }
                 }
+            } else {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") {
+                        lovedOne.birthday = draftBirthday
+                        lovedOne.expectedLifeSpan = draftExpectedLifeSpan
+                        do {
+                            try context.save()
+                        } catch {
+                            print("Save lovedOne instance failed: \(error)")
+                        }
+                        WidgetCenter.shared.reloadAllTimelines()
+                        dismiss()
+                    }
+                }
             }
         }
-        .onAppear { renderImage() }
-        .onChange(of: lovedOne.birthday) {
-            let exactAge = Int(lovedOne.exactAge)
-            if lovedOne.expectedLifeSpan < exactAge {
-                lovedOne.expectedLifeSpan = exactAge + 1
+        .onAppear {
+            draftBirthday = lovedOne.birthday
+            draftExpectedLifeSpan = lovedOne.expectedLifeSpan
+        }
+        .onChange(of: draftBirthday) {
+            let minAge = calculateAge(from: draftBirthday) + 1
+            if draftExpectedLifeSpan < minAge {
+                draftExpectedLifeSpan = minAge
             }
-            WidgetCenter.shared.reloadAllTimelines()
-            renderImage()
         }
-        .onChange(of: lovedOne.expectedLifeSpan) {
-            WidgetCenter.shared.reloadAllTimelines()
-            renderImage()
-        }
+
         .alert("How are we doing?", isPresented: $isShowReviewPrompt) {
             Button("Love it!") {
                 requestReview()
@@ -136,17 +153,10 @@ struct LovedOneDetail: View {
         }
     }
     
-    @MainActor func renderImage() {
-        let card = LovedOneCard(lovedOne: lovedOne)
-            .frame(width: 360, height: 180)
-        
-        let renderer = ImageRenderer(content: card)
-        
-        renderer.scale = displayScale
-        
-        if let uiImage = renderer.uiImage {
-            renderedImage = Image(uiImage: uiImage)
-        }
+    func calculateAge(from birthday: Date, at date: Date = .now) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year], from: birthday, to: date)
+        return max(0, components.year ?? 0)
     }
 }
 
