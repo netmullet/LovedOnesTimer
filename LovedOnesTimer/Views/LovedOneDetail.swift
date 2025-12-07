@@ -21,6 +21,7 @@ struct LovedOneDetail: View {
     @State private var draftBirthday: Date = .now
     @State private var draftExpectedLifeSpan: Int = 80
     @State private var isShowReviewPrompt: Bool = false
+    @FocusState private var isFocused: Bool
     
     @AppStorage("addLovedOneCount") private var addLovedOneCount: Int = 0
     @AppStorage("hasShownReviewAlert") private var hasShownReviewAlert = false
@@ -79,6 +80,22 @@ struct LovedOneDetail: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .cornerRadius(12)
                 }
+            }
+            
+            Section(header: Text("Note")) {
+                TextEditor(text: $lovedOne.note)
+                    .frame(height : 100)
+                    .focused($isFocused)
+                    .toolbar {
+                        if isFocused {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Close") {
+                                    self.isFocused = false
+                                }
+                            }
+                        }
+                    }
             }
         }
         .navigationTitle(isNew ? "Add" : "Edit")

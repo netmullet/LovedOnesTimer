@@ -19,6 +19,7 @@ struct UserProfileDetail: View {
     @State private var isShowSafari: Bool = false
     @State private var draftBirthday: Date = .now
     @State private var draftExpectedLifeSpan: Int = 80
+    @FocusState private var isFocused: Bool
 
     let admobNativeUnitId: String = Bundle.main.object(forInfoDictionaryKey: "AdmobNativeUnitId") as! String
     
@@ -62,6 +63,22 @@ struct UserProfileDetail: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .cornerRadius(12)
                 }
+            }
+            
+            Section(header: Text("Note")) {
+                TextEditor(text: $userProfile.note)
+                    .frame(height : 100)
+                    .focused($isFocused)
+                    .toolbar {
+                        if isFocused {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Close") {
+                                    self.isFocused = false
+                                }
+                            }
+                        }
+                    }
             }
         }
         .navigationTitle("Edit")
