@@ -293,7 +293,7 @@
 				CODE_SIGN_ENTITLEMENTS = CountDownWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = L9ZNN7856S;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -331,7 +331,7 @@
 				CODE_SIGN_ENTITLEMENTS = CountDownWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = L9ZNN7856S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CountDownWidget/Info.plist;
@@ -500,7 +500,7 @@
 				CODE_SIGN_ENTITLEMENTS = LovedOnesTimer/LovedOnesTimer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"LovedOnesTimer/Preview Content\"";
 				DEVELOPMENT_TEAM = L9ZNN7856S;
 				ENABLE_PREVIEWS = YES;
@@ -546,7 +546,7 @@
 				CODE_SIGN_ENTITLEMENTS = LovedOnesTimer/LovedOnesTimer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"LovedOnesTimer/Preview Content\"";
 				DEVELOPMENT_TEAM = L9ZNN7856S;
 				ENABLE_PREVIEWS = YES;

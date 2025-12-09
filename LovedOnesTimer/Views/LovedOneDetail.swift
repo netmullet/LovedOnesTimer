@@ -113,12 +113,12 @@ struct LovedOneDetail: View {
                         }
                         WidgetCenter.shared.reloadAllTimelines()
                         
+                        // Request review
                         addLovedOneCount += 1
                         let threshold = 3
                         if addLovedOneCount >= threshold && !hasShownReviewAlert {
                             isShowReviewPrompt = true
                             hasShownReviewAlert = true
-                            dismiss()
                         } else {
                             dismiss()
                         }
@@ -156,7 +156,6 @@ struct LovedOneDetail: View {
                 draftExpectedLifeSpan = minAge
             }
         }
-
         .alert("How are we doing?", isPresented: $isShowReviewPrompt) {
             Button("Love it!") {
                 requestReview()

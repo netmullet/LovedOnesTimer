@@ -10,10 +10,6 @@ import SwiftUI
 import SwiftData
 
 struct Provider: TimelineProvider {
-    var container: ModelContainer = {
-        try! ModelContainer(for: UserProfile.self)
-    }()
-    
     func placeholder(in context: Context) -> UserProfileEntry {
         UserProfileEntry(date: Date(), userProfiles: [])
     }
@@ -21,7 +17,7 @@ struct Provider: TimelineProvider {
     func getSnapshot(in context: Context, completion: @escaping (UserProfileEntry) -> ()) {
         let currentDate = Date.now
         Task {
-            let allUserProfiles = try await getUserProfiles()
+            let allUserProfiles = try await fetchUserProfiles()
             let entry = UserProfileEntry(date: currentDate, userProfiles: allUserProfiles)
             completion(entry)
         }
@@ -30,19 +26,19 @@ struct Provider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let currentDate = Date.now
         Task {
-            let allUserProfiles = try await getUserProfiles()
+            let allUserProfiles = try await fetchUserProfiles()
             let entry = UserProfileEntry(date: currentDate, userProfiles: allUserProfiles)
             let timeline = Timeline(entries: [entry], policy: .atEnd)
             completion(timeline)
         }
     }
     
-    @MainActor func getUserProfiles() async throws -> [UserProfile] {
-        let sort = [SortDescriptor(\UserProfile.expectedLifeSpan)]
-        let descriptor = FetchDescriptor<UserProfile>(sortBy: sort)
-        let allUserProfiles = try?
-            container.mainContext.fetch(descriptor)
-        return allUserProfiles ?? []
+    private func fetchUserProfiles() async throws -> [UserProfile] {
+        let container = SharedModelContainer.shared.container
+        let context = ModelContext(container)
+        let userProfiles = try? context.fetch(FetchDescriptor<UserProfile>())
+        
+        return userProfiles ?? []
     }
 }
 
