@@ -19,38 +19,33 @@ class LovedOne {
         return Calendar.current.date(from: components) ?? Date()
     }()
     var expectedLifeSpan: Int = 80
+    var note: String = ""
     var sortOrder: Int
     
-    init(name: String, birthday: Date, expectedLifeSpan: Int, sortOrder: Int) {
+    init(name: String, birthday: Date, expectedLifeSpan: Int, note: String = "", sortOrder: Int) {
         self.name = name
         self.birthday = birthday
         self.expectedLifeSpan = expectedLifeSpan
+        self.note = note
         self.sortOrder = sortOrder
     }
     
     static let sampleData = [
-        LovedOne(name: "あきら", birthday: Date.now, expectedLifeSpan: 75, sortOrder: 0),
-        LovedOne(name: "あさこ", birthday: Date.now, expectedLifeSpan: 88, sortOrder: 1),
-        LovedOne(name: "けんじ", birthday: Date.now, expectedLifeSpan: 81, sortOrder: 2),
-        LovedOne(name: "ゆう", birthday: Date.now,  expectedLifeSpan: 82, sortOrder: 3),
+        LovedOne(name: "あきら", birthday: Date.now, expectedLifeSpan: 75, note: "", sortOrder: 0),
+        LovedOne(name: "あさこ", birthday: Date.now, expectedLifeSpan: 88, note: "", sortOrder: 1),
+        LovedOne(name: "けんじ", birthday: Date.now, expectedLifeSpan: 81, note: "", sortOrder: 2),
+        LovedOne(name: "ゆう", birthday: Date.now,  expectedLifeSpan: 82, note: "", sortOrder: 3),
     ]
     
     var exactAge: Double {
-        let calendar = Calendar.current
-        let now = Date()
-        let ageComponents = calendar.dateComponents([.year, .month, .day], from: self.birthday, to: now)
-        let years = ageComponents.year
-        let months = ageComponents.month
-        let days = ageComponents.day
-        
-        let exactAge: Double = Double(years ?? 0) + Double(months ?? 0) / 12.0 + Double(days ?? 0) / 365.25
-        
-        return exactAge
+        let comps = Calendar.current.dateComponents([.year, .month, .day], from: birthday, to: Date())
+        return Double(comps.year ?? 0)
+             + Double(comps.month ?? 0) / 12.0
+             + Double(comps.day ?? 0) / 365.25
     }
     
     var remainingDays: Int {
         let remainingYears = Double(expectedLifeSpan) - exactAge
-
         let remainingDays = Int(remainingYears * 365.25)
 
         return remainingDays

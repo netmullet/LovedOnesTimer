@@ -17,37 +17,29 @@ class UserProfile {
         components.day = 1
         return Calendar.current.date(from: components) ?? Date()
     }()
-    
     var expectedLifeSpan: Int = 80
+    var note: String = ""
     
-    init(birthday: Date, expectedLifeSpan: Int) {
+    init(birthday: Date, expectedLifeSpan: Int, note: String = "") {
         self.birthday = birthday
         self.expectedLifeSpan = expectedLifeSpan
+        self.note = note
     }
     
     static let sampleData = [
-        UserProfile(birthday: Date.now, expectedLifeSpan: 80)
+        UserProfile(birthday: Date.now, expectedLifeSpan: 80, note: "")
     ]
     
     var exactAge: Double {
-        let calendar = Calendar.current
-        let now = Date()
+        let comps = Calendar.current.dateComponents([.year, .month, .day], from: birthday, to: Date())
         
-        let ageComponents = calendar.dateComponents([.year, .month, .day], from: self.birthday, to: now)
-        let years = ageComponents.year
-        let months = ageComponents.month
-        let days = ageComponents.day
-        
-        // 実年齢を算出
-        let exactAge: Double = Double(years ?? 0) + Double(months ?? 0) / 12.0 + Double(days ?? 0) / 365.25
-        
-        return exactAge
+        return Double(comps.year ?? 0)
+             + Double(comps.month ?? 0) / 12.0
+             + Double(comps.day ?? 0) / 365.25
     }
     
     var remainingDays: Int {
-
         let remainingYears = Double(expectedLifeSpan) - exactAge
-
         let remainingDays = Int(remainingYears * 365.25)
 
         return remainingDays

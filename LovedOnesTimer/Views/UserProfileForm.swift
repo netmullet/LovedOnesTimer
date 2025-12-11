@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct UserProfileForm: View {
-    
     @AppStorage("isOnboarding") var isOnboarding: Bool?
     @Environment(\.modelContext) private var context
-    
     @State private var birthday: Date = {
         var components = DateComponents()
         components.year = 2000
@@ -19,9 +18,7 @@ struct UserProfileForm: View {
         components.day = 1
         return Calendar.current.date(from: components) ?? Date()
     }()
-    
     @State private var expectedLifespan = 80
-    
     @State private var isShowSafari: Bool = false
     
     var body: some View {
@@ -95,6 +92,7 @@ struct UserProfileForm: View {
     
     private func saveUserProfile() {
         context.insert(UserProfile(birthday: birthday, expectedLifeSpan: expectedLifespan))
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 

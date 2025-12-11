@@ -25,6 +25,6 @@ struct LovedOnesTimerApp: App {
                 ContentView()
             }
         }
-        .modelContainer(for: [UserProfile.self, LovedOne.self])
+        .modelContainer(SharedModelContainer.shared.container)
     }
 }

@@ -2,26 +2,30 @@
 //  LovedOneCard.swift
 //  LovedOnesTimer
 //
-//  Created by Ryo Otsuka on 2025/07/06.
+//  Created by Ryo Otsuka on 2025/12/04.
 //
+
 
 import SwiftUI
 import SwiftData
 
-struct LovedOneCard: View {
+struct LovedOneWidgetCard: View {
     let blueGradientColors: [Color] = [
         .blueGradientTop,
         .blueGradientBottom
     ]
-    
-    var lovedOne: LovedOne
+    var name: String
+    var birthday: Date
+    var expectedLifeSpan: Int
+    var exactAge: Double
+    var remainingDays: Int
     
     var body: some View {
-        let percentage = Double(lovedOne.exactAge) / Double(lovedOne.expectedLifeSpan) * 100
+        let percentage = Double(exactAge) / Double(expectedLifeSpan) * 100
         
         VStack {
             HStack {
-                Text("\(lovedOne.name)")
+                Text("\(name)")
                     .font(.title2)
                     .fontWeight(.semibold)
                 Spacer()
@@ -29,30 +33,26 @@ struct LovedOneCard: View {
             .padding(.top)
             .padding(.leading)
             
-            Text("To age \(lovedOne.expectedLifeSpan)")
+            Text("To age \(expectedLifeSpan)")
                 .font(.title3)
                 .fontWeight(.semibold)
             
             HStack(alignment: .lastTextBaseline) {
                 Image(systemName: "heart.circle")
                     .font(.title)
-                Text("\(lovedOne.remainingDays)")
+                Text("\(remainingDays)")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                Text(lovedOne.remainingDays == 1 ? "day" : "days")
+                Text(remainingDays == 1 ? "day" : "days")
                     .font(.title2)
                     .fontWeight(.semibold)
             }
             
-            ProgressBar(percentage: percentage, expectedLifeSpan: lovedOne.expectedLifeSpan)
+            ProgressBar(percentage: percentage, expectedLifeSpan: expectedLifeSpan)
                 .padding(.bottom)
             
         }
         .foregroundStyle(.white)
         .background(Gradient(colors: blueGradientColors), in: RoundedRectangle(cornerRadius: 30))
     }
-}
-
-#Preview {
-    LovedOneCard(lovedOne: LovedOne.sampleData[0])
 }
