@@ -48,7 +48,7 @@ struct LovedOneWidgetCard: View {
                     .fontWeight(.semibold)
             }
             
-            ProgressBar(width: 280, height: 10, percentage: percentage, expectedLifeSpan: expectedLifeSpan)
+            ProgressBar(percentage: percentage, expectedLifeSpan: expectedLifeSpan)
                 .padding(.bottom)
             
         }
