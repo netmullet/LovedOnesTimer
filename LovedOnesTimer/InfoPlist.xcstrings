@@ -8,13 +8,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "LovedOnesTimer"
+            "value" : "LovedOnesCountdown"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "みんなの寿命タイマー"
+            "state" : "needs_review",
+            "value" : "みん寿"
           }
         }
       }
@@ -31,8 +31,8 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "みんなの寿命タイマー"
+            "state" : "needs_review",
+            "value" : "みん寿"
           }
         }
       }

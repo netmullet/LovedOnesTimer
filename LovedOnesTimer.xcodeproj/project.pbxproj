@@ -506,7 +506,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LovedOnesTimer/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = LovedOnesTimer;
+				INFOPLIST_KEY_CFBundleDisplayName = LovedOnesCountdown;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to deliver personalized ads to you.";
@@ -552,7 +552,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LovedOnesTimer/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = LovedOnesTimer;
+				INFOPLIST_KEY_CFBundleDisplayName = LovedOnesCountdown;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to deliver personalized ads to you.";

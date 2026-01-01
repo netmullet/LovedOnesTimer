@@ -94,7 +94,7 @@ struct LovedOneList: View {
 
 #Preview {
     LovedOneList()
-        .modelContainer(SampleData.shared.modelContainer)
+        .modelContainer(SampleData.shared.container)
 }
 
 #Preview("Empty List") {

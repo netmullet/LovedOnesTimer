@@ -17,8 +17,6 @@ struct LovedOneCard: View {
     var lovedOne: LovedOne
     
     var body: some View {
-        let percentage = Double(lovedOne.exactAge) / Double(lovedOne.expectedLifeSpan) * 100
-        
         VStack {
             HStack {
                 Text("\(lovedOne.name)")
@@ -44,7 +42,7 @@ struct LovedOneCard: View {
                     .fontWeight(.semibold)
             }
             
-            ProgressBar(percentage: percentage, expectedLifeSpan: lovedOne.expectedLifeSpan)
+            ProgressBar(exactAge: lovedOne.exactAge, expectedLifeSpan: lovedOne.expectedLifeSpan)
                 .padding(.bottom)
             
         }

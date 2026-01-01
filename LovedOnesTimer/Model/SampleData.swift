@@ -12,10 +12,10 @@ import SwiftData
 class SampleData {
     static let shared = SampleData()
     
-    let modelContainer: ModelContainer
+    let container: ModelContainer
     
     var context: ModelContext {
-        modelContainer.mainContext
+        container.mainContext
     }
     
     var userProfile: UserProfile {
@@ -35,7 +35,7 @@ class SampleData {
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
         
         do {
-            modelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
+            container = try ModelContainer(for: schema, configurations: [modelConfiguration])
             
             insertSampleData()
             

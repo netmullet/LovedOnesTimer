@@ -12,30 +12,20 @@ import SwiftData
 class LovedOne {
     var name: String
     var birthday: Date = {
-        var components = DateComponents()
-        components.year = 2000
-        components.month = 1
-        components.day = 1
-        return Calendar.current.date(from: components) ?? Date()
+        let components = DateComponents(year: 2000, month: 1, day: 1)
+        return Calendar.current.date(from: components) ?? .now
     }()
-    var expectedLifeSpan: Int = 80
-    var note: String = ""
+    var expectedLifeSpan: Int
+    var note: String
     var sortOrder: Int
     
-    init(name: String, birthday: Date, expectedLifeSpan: Int, note: String = "", sortOrder: Int) {
+    init(name: String, birthday: Date, expectedLifeSpan: Int = 80, note: String = "", sortOrder: Int) {
         self.name = name
         self.birthday = birthday
         self.expectedLifeSpan = expectedLifeSpan
         self.note = note
         self.sortOrder = sortOrder
     }
-    
-    static let sampleData = [
-        LovedOne(name: "あきら", birthday: Date.now, expectedLifeSpan: 75, note: "", sortOrder: 0),
-        LovedOne(name: "あさこ", birthday: Date.now, expectedLifeSpan: 88, note: "", sortOrder: 1),
-        LovedOne(name: "けんじ", birthday: Date.now, expectedLifeSpan: 81, note: "", sortOrder: 2),
-        LovedOne(name: "ゆう", birthday: Date.now,  expectedLifeSpan: 82, note: "", sortOrder: 3),
-    ]
     
     var exactAge: Double {
         let comps = Calendar.current.dateComponents([.year, .month, .day], from: birthday, to: Date())
@@ -50,4 +40,13 @@ class LovedOne {
 
         return remainingDays
     }
+}
+
+extension LovedOne {
+    static let sampleData = [
+            LovedOne(name: "あきら", birthday: Date.now, expectedLifeSpan: 75, note: "", sortOrder: 0),
+            LovedOne(name: "あさこ", birthday: Date.now, expectedLifeSpan: 88, note: "", sortOrder: 1),
+            LovedOne(name: "けんじ", birthday: Date.now, expectedLifeSpan: 81, note: "", sortOrder: 2),
+            LovedOne(name: "ゆう", birthday: Date.now,  expectedLifeSpan: 82, note: "", sortOrder: 3),
+    ]
 }

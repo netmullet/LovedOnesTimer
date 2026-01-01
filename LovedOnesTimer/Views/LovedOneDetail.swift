@@ -14,7 +14,6 @@ import AdMobUI
 struct LovedOneDetail: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
-    @Environment(\.displayScale) var displayScale
     @Environment(\.requestReview) private var requestReview
     
     @Bindable var lovedOne: LovedOne
@@ -35,6 +34,36 @@ struct LovedOneDetail: View {
     }
     
     var body: some View {
+        contentStack
+        .navigationTitle(isNew ? "Add" : "Edit")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            toolbarContent
+        }
+        .onAppear {
+            draftBirthday = lovedOne.birthday
+            draftExpectedLifeSpan = lovedOne.expectedLifeSpan
+        }
+        .onChange(of: draftBirthday) {
+            let minAge = calculateAge(from: draftBirthday) + 1
+            if draftExpectedLifeSpan < minAge {
+                draftExpectedLifeSpan = minAge
+            }
+        }
+        .alert("How are we doing?", isPresented: $isShowReviewPrompt) {
+            Button("Love it!") {
+                requestReview()
+                dismiss()
+            }
+            Button("Needs work") {
+                dismiss()
+            }
+        } message: {
+            Text("Your reviews help the app even better.")
+        }
+    }
+    
+    private var contentStack: some View {
         Form {
             Section(header: Text("Name / Birthdate")) {
                 TextField("Name", text: $lovedOne.name)
@@ -98,9 +127,10 @@ struct LovedOneDetail: View {
                     }
             }
         }
-        .navigationTitle(isNew ? "Add" : "Edit")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
+    }
+    
+    private var toolbarContent: some ToolbarContent {
+        Group {
             if isNew {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
@@ -145,27 +175,6 @@ struct LovedOneDetail: View {
                     }
                 }
             }
-        }
-        .onAppear {
-            draftBirthday = lovedOne.birthday
-            draftExpectedLifeSpan = lovedOne.expectedLifeSpan
-        }
-        .onChange(of: draftBirthday) {
-            let minAge = calculateAge(from: draftBirthday) + 1
-            if draftExpectedLifeSpan < minAge {
-                draftExpectedLifeSpan = minAge
-            }
-        }
-        .alert("How are we doing?", isPresented: $isShowReviewPrompt) {
-            Button("Love it!") {
-                requestReview()
-                dismiss()
-            }
-            Button("Needs work") {
-                dismiss()
-            }
-        } message: {
-            Text("Your reviews help the app even better.")
         }
     }
     
