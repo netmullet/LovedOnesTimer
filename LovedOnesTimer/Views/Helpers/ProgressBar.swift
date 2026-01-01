@@ -10,10 +10,11 @@ import SwiftUI
 struct ProgressBar: View {
     var width: CGFloat = 280
     var height: CGFloat = 20
-    var percentage: CGFloat = 70
+    var exactAge: Double = 20.0
     var expectedLifeSpan: Int = 80
     
     var body: some View {
+        let percentage = Double(exactAge) / Double(expectedLifeSpan) * 100
         let multiplier = width / 100
         
         HStack {

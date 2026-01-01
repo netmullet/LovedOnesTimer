@@ -10,12 +10,8 @@ import SwiftData
 
 
 struct ContentView: View {
-    @Environment(\.scenePhase) private var scenePhase: ScenePhase
-    @AppStorage("isOnboarding") var isOnboarding: Bool?
     @Query private var userProfiles: [UserProfile]
-    
     @State private var isShowingSetttings: Bool = false
-    @State private var availableWidth: CGFloat = 320
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -60,5 +56,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(SampleData.shared.modelContainer)
+        .modelContainer(SampleData.shared.container)
 }

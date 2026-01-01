@@ -14,15 +14,13 @@ struct WelcomePage: View {
                 .resizable()
                 .frame(width: 150, height: 150)
 
-            Text("Welcome to \nLoved Ones Timer")
+            Text("Welcome to \nLovedOnesTimer")
                 .font(.title)
                 .fontWeight(.semibold)
                 .padding(.top)
                 .multilineTextAlignment(.center)
 
-            Text("""
-            It counts down the days left for you and your friends. A gentle reminder to cherish today — before it becomes “I wish I had…”
-            """)
+            Text("It counts down the days left for you and your loved ones. It’s a gentle reminder to cherish today.")
             .font(.title3)
             .multilineTextAlignment(.center)
             .lineSpacing(6)

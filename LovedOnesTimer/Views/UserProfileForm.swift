@@ -8,15 +8,13 @@
 import SwiftUI
 import WidgetKit
 
+
 struct UserProfileForm: View {
     @AppStorage("isOnboarding") var isOnboarding: Bool?
     @Environment(\.modelContext) private var context
     @State private var birthday: Date = {
-        var components = DateComponents()
-        components.year = 2000
-        components.month = 1
-        components.day = 1
-        return Calendar.current.date(from: components) ?? Date()
+        let components = DateComponents(year: 2000, month: 1, day: 1)
+        return Calendar.current.date(from: components) ?? .now
     }()
     @State private var expectedLifespan = 80
     @State private var isShowSafari: Bool = false
