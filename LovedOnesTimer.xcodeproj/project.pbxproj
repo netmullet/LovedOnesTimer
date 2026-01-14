@@ -12,6 +12,7 @@
 		617369B12EDFE08200796F41 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617369B02EDFE08200796F41 /* WidgetKit.framework */; };
 		617369B32EDFE08200796F41 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617369B22EDFE08200796F41 /* SwiftUI.framework */; };
 		617369BE2EDFE08300796F41 /* CountDownWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 617369AE2EDFE08200796F41 /* CountDownWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		61BFF2892F17617200D0B588 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 61BFF2882F17617200D0B588 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		617369B22EDFE08200796F41 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		617369C42EDFE0A100796F41 /* CountDownWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CountDownWidgetExtension.entitlements; sourceTree = "<group>"; };
 		61BDDB012DD998860024EB0F /* LovedOnesTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LovedOnesTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		61BFF2882F17617200D0B588 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -136,6 +138,7 @@
 				617369B42EDFE08200796F41 /* CountDownWidget */,
 				617369AF2EDFE08200796F41 /* Frameworks */,
 				61BDDB022DD998860024EB0F /* Products */,
+				61BFF2882F17617200D0B588 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -254,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61BFF2892F17617200D0B588 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
