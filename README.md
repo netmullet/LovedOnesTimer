@@ -19,6 +19,9 @@ Widgetの実装において、アプリ本体とWidget間でデータを共有�
 - **寿命のカウントダウン**: 誕生日と想定寿命から想定寿命までの残り日数を算出し、カウントダウン
 - **ウィジェット対応**: ホーム画面からカウントダウンを常時確認
 
+![demo_image](https://github.com/user-attachments/assets/f5b2c376-b23c-46c4-a24b-622c2bec066a)
+
+
 ## 技術スタック
 
 Lang/Framefowrk/Tools | Tech Stack
