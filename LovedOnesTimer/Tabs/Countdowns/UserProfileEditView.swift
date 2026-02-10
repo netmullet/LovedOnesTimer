@@ -10,26 +10,30 @@ import AdMobUI
 import WidgetKit
 
 
-struct UserProfileDetail: View {
-    @Environment(\.modelContext) private var context
+struct UserProfileEditView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.displayScale) var displayScale
-    
     @Bindable var userProfile: UserProfile
-    @State private var isShowSafari: Bool = false
-    @State private var draftBirthday: Date = .now
-    @State private var draftExpectedLifeSpan: Int = 80
-    @FocusState private var isFocused: Bool
+    
+    // DatePickerの日付範囲（125歳を超えないように制限）
+    private var dateRange: ClosedRange<Date> {
+        let calendar = Calendar.current
+        let now = Date()
+        let minDate = calendar.date(byAdding: .year, value: -124, to: now) ?? now
+        let maxDate = now
+        return minDate...maxDate
+    }
 
     let admobNativeUnitId: String = Bundle.main.object(forInfoDictionaryKey: "AdmobNativeUnitId") as! String
     
     var body: some View {
         Form {
-            DatePicker("Birthdate", selection: $draftBirthday, displayedComponents: .date)
+            DatePicker("Date of birth", selection: $userProfile.birthday, in: dateRange, displayedComponents: .date)
   
             Section(header: Text("Life expectancy")) {
-                let minAge = calculateAge(from: draftBirthday) + 1
-                Stepper("\(draftExpectedLifeSpan) years old", value: $draftExpectedLifeSpan, in: minAge...130)
+                let currentAge = userProfile.currentAge
+                let minLifespan = max(1, currentAge + 1)
+                let validRange = minLifespan...125
+                Stepper("\(userProfile.lifespan) years old", value: $userProfile.lifespan, in: validRange)
             }
             
             Section {
@@ -64,62 +68,23 @@ struct UserProfileDetail: View {
                     .cornerRadius(12)
                 }
             }
-            
-            Section(header: Text("Note")) {
-                TextEditor(text: $userProfile.note)
-                    .frame(height : 100)
-                    .focused($isFocused)
-                    .toolbar {
-                        if isFocused {
-                            ToolbarItemGroup(placement: .keyboard) {
-                                Spacer()
-                                Button("Close") {
-                                    self.isFocused = false
-                                }
-                            }
-                        }
-                    }
-            }
         }
         .navigationTitle("Edit")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
-                    userProfile.birthday = draftBirthday
-                    userProfile.expectedLifeSpan = draftExpectedLifeSpan
-                    do {
-                        try context.save()
-                    } catch {
-                        print("Save userProfile instance failed: \(error)")
-                    }
+                Button("Save", systemImage: "checkmark") {
                     WidgetCenter.shared.reloadAllTimelines()
                     dismiss()
                 }
-            }
-        }
-        .onAppear {
-            draftBirthday = userProfile.birthday
-            draftExpectedLifeSpan = userProfile.expectedLifeSpan
-        }
-        .onChange(of: draftBirthday) {
-            let minAge = calculateAge(from: draftBirthday) + 1
-            if draftExpectedLifeSpan < minAge {
-                draftExpectedLifeSpan = minAge
+                .tint(.accent)
             }
         }
     }
-    
-    func calculateAge(from birthday: Date, at date: Date = .now) -> Int {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year], from: birthday, to: date)
-        return max(0, components.year ?? 0)
-    }
-
 }
 
 #Preview {
     NavigationStack {
-        UserProfileDetail(userProfile: SampleData.shared.userProfile)
+        UserProfileEditView(userProfile: SampleData.shared.userProfile)
     }
 }

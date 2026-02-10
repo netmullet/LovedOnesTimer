@@ -36,7 +36,7 @@ struct ConfigurableWidgetEntryView : View {
 
     var body: some View {
         if entry.configuration.selectedLovedOne != nil {
-            LovedOneWidgetCard(name: entry.configuration.selectedLovedOne!.id, birthday: entry.configuration.selectedLovedOne!.birthday, expectedLifeSpan: entry.configuration.selectedLovedOne!.expectedLifeSpan, exactAge: entry.configuration.selectedLovedOne!.exactAge, remainingDays: entry.configuration.selectedLovedOne!.remainingDays)
+            LovedOneWidgetCard(name: entry.configuration.selectedLovedOne!.id, birthday: entry.configuration.selectedLovedOne!.birthday, lifespan: entry.configuration.selectedLovedOne!.lifespan)
         }
     }
 }

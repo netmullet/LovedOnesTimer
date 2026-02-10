@@ -55,7 +55,7 @@ struct StaticWidgetEntryView : View {
             ContentUnavailableView("No Countdown Yet.", systemImage:
                                     "plus.circle.fill")
         } else {
-            UserProfileCard(userProfile: entry.userProfiles.first!)
+            // TODO: ウィジェット用のViewを追加する
         }
     }
 }

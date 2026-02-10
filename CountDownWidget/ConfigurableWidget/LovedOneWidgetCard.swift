@@ -16,13 +16,9 @@ struct LovedOneWidgetCard: View {
     ]
     var name: String
     var birthday: Date
-    var expectedLifeSpan: Int
-    var exactAge: Double
-    var remainingDays: Int
+    var lifespan: Int
     
     var body: some View {
-//        let percentage = Double(exactAge) / Double(expectedLifeSpan) * 100
-        
         VStack {
             HStack {
                 Text("\(name)")
@@ -33,24 +29,9 @@ struct LovedOneWidgetCard: View {
             .padding(.top)
             .padding(.leading)
             
-            Text("To age \(expectedLifeSpan)")
+            Text("To age \(lifespan)")
                 .font(.title3)
                 .fontWeight(.semibold)
-            
-            HStack(alignment: .lastTextBaseline) {
-                Image(systemName: "heart.circle")
-                    .font(.title)
-                Text("\(remainingDays)")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                Text(remainingDays == 1 ? "day" : "days")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-            }
-            
-            ProgressBar(exactAge: exactAge, expectedLifeSpan: expectedLifeSpan)
-                .padding(.bottom)
-            
         }
         .foregroundStyle(.white)
         .background(Gradient(colors: blueGradientColors), in: RoundedRectangle(cornerRadius: 30))

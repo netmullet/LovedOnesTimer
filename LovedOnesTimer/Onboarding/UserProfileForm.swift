@@ -12,12 +12,22 @@ import WidgetKit
 struct UserProfileForm: View {
     @AppStorage("isOnboarding") var isOnboarding: Bool?
     @Environment(\.modelContext) private var context
-    @State private var birthday: Date = {
-        let components = DateComponents(year: 2000, month: 1, day: 1)
-        return Calendar.current.date(from: components) ?? .now
-    }()
-    @State private var expectedLifespan = 80
+    @State private var birthday = Calendar.current.date(from: DateComponents(year: 2000, month: 1, day: 1)) ?? Date()
+    @State private var lifespan = 80
     @State private var isShowSafari: Bool = false
+    
+    private var newUserProfile: UserProfile {
+        UserProfile(birthday: birthday, lifespan: lifespan)
+    }
+    
+    // DatePickerの日付範囲（125歳を超えないように制限）
+    private var dateRange: ClosedRange<Date> {
+        let calendar = Calendar.current
+        let now = Date()
+        let minDate = calendar.date(byAdding: .year, value: -124, to: now) ?? now
+        let maxDate = now
+        return minDate...maxDate
+    }
     
     var body: some View {
         VStack {
@@ -26,17 +36,19 @@ struct UserProfileForm: View {
                 .fontWeight(.semibold)
                 .fixedSize(horizontal: false, vertical: true)
             
-            DatePicker("", selection: $birthday, in:
-                        Date.distantPast...Date.now, displayedComponents: .date)
-            .datePickerStyle(.wheel)
-            .labelsHidden()
+            DatePicker("Date of birth", selection: $birthday, in: dateRange, displayedComponents: .date)
+                .datePickerStyle(.wheel)
+                .labelsHidden()
             
             Text("Select your expected lifespan")
                 .font(.title2)
                 .fontWeight(.semibold)
                 .fixedSize(horizontal: false, vertical: true)
 
-            Stepper("\(expectedLifespan) years old", value: $expectedLifespan, in: 1...130)
+            let currentAge = newUserProfile.currentAge
+            let minLifespan = max(1, currentAge + 1)
+            let validRange = minLifespan...125
+            Stepper("\(newUserProfile.lifespan) years old", value: $lifespan, in: validRange)
                 .font(.title3)
                 .fontWeight(.semibold)
                 .padding(.horizontal, 50)
@@ -89,7 +101,7 @@ struct UserProfileForm: View {
     }
     
     private func saveUserProfile() {
-        context.insert(UserProfile(birthday: birthday, expectedLifeSpan: expectedLifespan))
+        context.insert(UserProfile(birthday: birthday, lifespan: lifespan))
         WidgetCenter.shared.reloadAllTimelines()
     }
 }

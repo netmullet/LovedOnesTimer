@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnBoardingView: View {
+struct OnboardingView: View {
     var body: some View {
         TabView {
             WelcomePage()
@@ -19,5 +19,5 @@ struct OnBoardingView: View {
 }
 
 #Preview {
-    OnBoardingView()
+    OnboardingView()
 }

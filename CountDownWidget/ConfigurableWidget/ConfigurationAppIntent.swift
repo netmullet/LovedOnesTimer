@@ -21,9 +21,9 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
 struct LovedOneEntity: AppEntity {
     var id: String
     var birthday: Date
-    var expectedLifeSpan: Int
-    var exactAge: Double
-    var remainingDays: Int
+    var lifespan: Int
+//    var exactAge: Double
+//    var remainingDays: Int
     
     static var typeDisplayRepresentation: TypeDisplayRepresentation
                 = TypeDisplayRepresentation(name: "Selected Loved One")
@@ -53,7 +53,7 @@ struct LovedOneQuery: EntityQuery {
         let context = ModelContext(container)
         let lovedOnes = try? context.fetch(FetchDescriptor<LovedOne>())
         let results = lovedOnes?.map({ lovedOne in
-            LovedOneEntity(id: lovedOne.name, birthday: lovedOne.birthday, expectedLifeSpan: lovedOne.expectedLifeSpan, exactAge: lovedOne.exactAge, remainingDays: lovedOne.remainingDays)
+            LovedOneEntity(id: lovedOne.name, birthday: lovedOne.birthday, lifespan: lovedOne.lifespan)
         })
         
         return results ?? []

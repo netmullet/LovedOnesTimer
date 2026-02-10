@@ -68,12 +68,11 @@
 			membershipExceptions = (
 				Assets.xcassets,
 				Localizable.xcstrings,
+				Model/EmojiType.swift,
+				Model/LifeExpectancyCalculatable.swift,
 				Model/LovedOne.swift,
 				Model/SharedModelContainer.swift,
 				Model/UserProfile.swift,
-				Views/Helpers/ProgressBar.swift,
-				Views/LovedOneCard.swift,
-				Views/UserProfileCard.swift,
 			);
 			target = 617369AD2EDFE08200796F41 /* CountDownWidgetExtension */;
 		};
@@ -505,7 +504,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"LovedOnesTimer/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = L9ZNN7856S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -551,7 +550,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"LovedOnesTimer/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = L9ZNN7856S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
