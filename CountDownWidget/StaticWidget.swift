@@ -9,16 +9,17 @@ import WidgetKit
 import SwiftUI
 import SwiftData
 
+
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> UserProfileEntry {
-        UserProfileEntry(date: Date(), userProfiles: [])
+        UserProfileEntry(date: Date(), userProfile: nil)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (UserProfileEntry) -> ()) {
         let currentDate = Date.now
         Task {
-            let allUserProfiles = try await fetchUserProfiles()
-            let entry = UserProfileEntry(date: currentDate, userProfiles: allUserProfiles)
+            let userProfile = try await fetchUserProfile()
+            let entry = UserProfileEntry(date: currentDate, userProfile: userProfile)
             completion(entry)
         }
     }
@@ -26,36 +27,42 @@ struct Provider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let currentDate = Date.now
         Task {
-            let allUserProfiles = try await fetchUserProfiles()
-            let entry = UserProfileEntry(date: currentDate, userProfiles: allUserProfiles)
+            let userProfile = try await fetchUserProfile()
+            let entry = UserProfileEntry(date: currentDate, userProfile: userProfile)
             let timeline = Timeline(entries: [entry], policy: .atEnd)
             completion(timeline)
         }
     }
     
-    private func fetchUserProfiles() async throws -> [UserProfile] {
+    private func fetchUserProfile() async throws -> UserProfile? {
         let container = SharedModelContainer.shared.container
         let context = ModelContext(container)
         let userProfiles = try? context.fetch(FetchDescriptor<UserProfile>())
         
-        return userProfiles ?? []
+        return userProfiles?.first
     }
 }
 
 struct UserProfileEntry: TimelineEntry {
     let date: Date
-    let userProfiles: [UserProfile]
+    let userProfile: UserProfile?
 }
 
 struct StaticWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        if entry.userProfiles.isEmpty {
-            ContentUnavailableView("No Countdown Yet.", systemImage:
-                                    "plus.circle.fill")
+        if let userProfile = entry.userProfile {
+            VStack {
+                CountdownStatsView(entity: userProfile)
+                
+                VStack(spacing: 12) {
+                    EmojiTableView(entity: userProfile)
+                    EmojiLegendView(entity: userProfile)
+                }
+            }
         } else {
-            // TODO: ウィジェット用のViewを追加する
+            ContentUnavailableView("No Profile Yet.", systemImage: "person.circle.fill")
         }
     }
 }
@@ -68,9 +75,9 @@ struct StaticWidget: Widget {
             StaticWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
-        .configurationDisplayName("My Countdown")
+        .configurationDisplayName("Your Countdown")
         .description("This is your countdown widget.")
-        .supportedFamilies([.systemMedium])
+        .supportedFamilies([.systemLarge])
         .contentMarginsDisabled()
     }
 }
@@ -79,5 +86,5 @@ struct StaticWidget: Widget {
 #Preview(as: .systemSmall) {
     StaticWidget()
 } timeline: {
-    UserProfileEntry(date: .now, userProfiles: [])
+    UserProfileEntry(date: .now, userProfile: nil)
 }

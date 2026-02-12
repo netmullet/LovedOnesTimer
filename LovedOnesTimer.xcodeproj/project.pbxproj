@@ -73,6 +73,9 @@
 				Model/LovedOne.swift,
 				Model/SharedModelContainer.swift,
 				Model/UserProfile.swift,
+				Tabs/Countdowns/CountdownStatsView.swift,
+				Tabs/Countdowns/EmojiLegendView.swift,
+				Tabs/Countdowns/EmojiTableView.swift,
 			);
 			target = 617369AD2EDFE08200796F41 /* CountDownWidgetExtension */;
 		};

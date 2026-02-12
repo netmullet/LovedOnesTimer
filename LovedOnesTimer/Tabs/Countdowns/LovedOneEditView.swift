@@ -94,6 +94,7 @@ struct LovedOneEditView: View {
         Group {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Add", systemImage: "checkmark") {
+                    WidgetCenter.shared.reloadAllTimelines()
                     dismiss()
                 }
                 .tint(.accent)

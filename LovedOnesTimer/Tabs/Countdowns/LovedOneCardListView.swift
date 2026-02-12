@@ -15,20 +15,23 @@ struct LovedOneCardListView: View {
     var body: some View {
         Group {
             if !lovedOnes.isEmpty {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack {
-                        ForEach(lovedOnes) { lovedOne in
-                            LovedOneCardView(lovedOne: lovedOne)
-                        }
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets())
-                        .listRowBackground(Color.appBackground)
+                if lovedOnes.count == 1 {
+                    HStack {
+                        LovedOneCardView(lovedOne: lovedOnes[0])
                     }
-                    .scrollTargetLayout()
+                } else {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack {
+                            ForEach(lovedOnes) { lovedOne in
+                                LovedOneCardView(lovedOne: lovedOne)
+                            }
+                        }
+                        .scrollTargetLayout()
+                    }
+                    .scrollTargetBehavior(.viewAligned)
+                    .padding(.horizontal, 10.0)
+                    .scrollClipDisabled()
                 }
-                .scrollTargetBehavior(.viewAligned)
-                .padding(.horizontal, 10.0)
-                .scrollClipDisabled()
             } else {
                 ContentUnavailableView {
                     Label("Add Countdowns", systemImage: "person.and.person")

@@ -20,14 +20,10 @@ struct LovedOneCardView: View {
                     .font(.title2)
                     .padding(.top, 12)
                 
-                // 残り人生情報表示（共通View使用）
                 CountdownStatsView(entity: lovedOne)
                 
-                // ドットグリッド（共通View使用）
                 VStack(spacing: 12) {
                     EmojiTableView(entity: lovedOne)
-                    
-                    // 凡例（共通View使用）
                     EmojiLegendView(entity: lovedOne)
                 }
                 .padding()
@@ -41,6 +37,7 @@ struct LovedOneCardView: View {
             NavigationStack {
                 LovedOneEditView(lovedOne: lovedOne)
             }
+            .interactiveDismissDisabled()
         }
     }
 }

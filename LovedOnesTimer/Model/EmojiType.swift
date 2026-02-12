@@ -14,15 +14,6 @@ enum EmojiType: CaseIterable {
     case oneMonth
     case oneDay
     
-//    var color: Color {
-//        switch self {
-//        case .tenYears: return .purple
-//        case .oneYear:  return .blue
-//        case .oneMonth: return .green
-//        case .oneDay:   return .orange
-//        }
-//    }
-    
     var emoji: String {
         switch self {
         case .tenYears: return "🌏"

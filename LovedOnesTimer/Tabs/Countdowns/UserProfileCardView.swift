@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct UserProfileCardView: View {
     @Bindable var userProfile: UserProfile
     @State private var showUserProfileEdit = false
@@ -16,14 +17,10 @@ struct UserProfileCardView: View {
             showUserProfileEdit = true
         } label: {
             VStack(spacing: 0) {
-                // 残り人生情報表示（共通View使用）
                 CountdownStatsView(entity: userProfile)
                 
-                // ドットグリッド（共通View使用）
                 VStack(spacing: 12) {
                     EmojiTableView(entity: userProfile)
-                    
-                    // 凡例（共通View使用）
                     EmojiLegendView(entity: userProfile)
                 }
                 .padding()
@@ -34,6 +31,7 @@ struct UserProfileCardView: View {
             NavigationStack {
                 UserProfileEditView(userProfile: userProfile)
             }
+            .interactiveDismissDisabled()
         }
     }
 }

@@ -10,6 +10,7 @@ import WidgetKit
 import AppIntents
 import SwiftData
 
+
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource { "Configuration" }
     static var description: IntentDescription { "This is your loved one's countdown widget." }
@@ -18,12 +19,10 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
     var selectedLovedOne: LovedOneEntity?
 }
 
-struct LovedOneEntity: AppEntity {
+struct LovedOneEntity: AppEntity, LifeExpectancyCalculatable {
     var id: String
     var birthday: Date
     var lifespan: Int
-//    var exactAge: Double
-//    var remainingDays: Int
     
     static var typeDisplayRepresentation: TypeDisplayRepresentation
                 = TypeDisplayRepresentation(name: "Selected Loved One")
