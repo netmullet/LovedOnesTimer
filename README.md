@@ -21,6 +21,10 @@ Widgetの実装において、アプリ本体とWidget間でデータを共有�
 
 ![demo_image](https://github.com/user-attachments/assets/f5b2c376-b23c-46c4-a24b-622c2bec066a)
 
+2026/2/13. 下図のデザインに刷新しました。
+
+<img width="319" height="693" alt="Simulator Screenshot - iPhone 17 Pro - 2026-02-13 at 23 06 19 2 (1)" src="https://github.com/user-attachments/assets/5fd89ea8-4e20-4d51-8bf5-b95766d1e329" />
+
 
 ## 技術スタック
 
